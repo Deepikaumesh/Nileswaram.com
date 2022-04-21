@@ -8,57 +8,39 @@ class AdRegistration extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Advertisement Resgistration",
-          //style: TextStyle(color: Colors.blueGrey, fontSize: 17),
-          style: GoogleFonts.quicksand(color: Colors.blueGrey, fontSize: 17,fontWeight: FontWeight.bold),
-        ),
-        elevation: 0,
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              size: 20,
-              color: Colors.black,
-            )),
-      ),
+      appBar: AppBar(title: Text("Advertaisement Registration",style: GoogleFonts.prompt(color: Colors.red.shade900),),backgroundColor: Colors.white,
+        elevation: 0,centerTitle: true,leading: GestureDetector(
+          onTap: () { Navigator.pop(context);},
+          child: Icon(
+            Icons.arrow_back_rounded,color: Colors.red.shade900,  // add custom icons also
+          ),),),
       body: Container(
         height: MediaQuery.of(context).size.height,
-        width: double.infinity,
-        child: SingleChildScrollView(
+        width:  MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 40,
+            vertical: 100,
+          ),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 20,
-                ),
-                child: Column(
-                  children: [
-                    makeInput(
-                      label: "Image",
-                    ),
-
-                    SizedBox(
-                      height: 50,
-                      width: 200,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all(Colors.red.shade900),
-                        ),
-                        onPressed: () {},
-                        child: Text("Submit"),
-                      ),
-                    ),
-                  ],
+              makeInput(label: "News/Event Title"),
+              makeInput(label: "Upload Image "),
+              SizedBox(
+                height: 50,
+                width: 200,
+                child:  ElevatedButton(
+                  style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.red.shade900),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              side: BorderSide(color: Colors.red.shade900)
+                          )
+                      )
+                  ), onPressed: () {  },
+                  child: Text("Submit",style: GoogleFonts.prompt(fontSize: 22),),
                 ),
               ),
             ],

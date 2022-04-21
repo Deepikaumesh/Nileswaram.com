@@ -26,7 +26,7 @@ class _Barbershop_RegPageState extends State<Barbershop_RegPage> {
 
   late bool status;
   late String message;
-  String serverUrl = "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Registration/Barber_shop_Reg.php";
+  String serverUrl = "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Registration/Barber_shop_Reg.php";
 
   @override
   void initState() {

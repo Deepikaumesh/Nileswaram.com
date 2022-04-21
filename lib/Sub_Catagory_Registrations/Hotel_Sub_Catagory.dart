@@ -8,7 +8,7 @@ import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/Kids_S
 import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/Ladies_Section.dart';
 import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/UnderGarments_Section.dart';
 
-import '../Dummy/more_test.dart';
+import 'Textile_Sub_Sections/Family_store_Registration.dart';
 
 class Hotel_Sub extends StatefulWidget {
   const Hotel_Sub({Key? key}) : super(key: key);

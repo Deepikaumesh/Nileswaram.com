@@ -44,7 +44,7 @@ class _Furniture_DisplayState extends State<Furniture_Display> {
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/hotel/hoteldisplay.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Furniture/furniture.php";
     // old  table textile
     // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 

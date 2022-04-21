@@ -27,7 +27,7 @@ class _Kids_SectionState extends State<Kids_Section> {
   late bool status;
   late String message;
   //String serverUrl = "https://astrasoftware.in/directoryapp/Nileswaram.com/more_insert_test.php";
-  String serverUrl = "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Registration/Textile_Registration.php";
+  String serverUrl = "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Registration/kids_Reg_Page.php";
 
   @override
   void initState() {

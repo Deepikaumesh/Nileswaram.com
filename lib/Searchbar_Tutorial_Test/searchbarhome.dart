@@ -57,24 +57,24 @@ class _Searchbar_HomeState extends State<Searchbar_Home> {
           elevation: 0,
         ),
         backgroundColor: Colors.transparent,
-        // body:
-        // SafeArea(
-        //   child:
-        //   // Container(
-        //   //   child: ListView.builder(
-        //   //     itemBuilder: (context, index) {
-        //   //       if (!_isLoading) {
-        //   //         return index == 0
-        //   //             ? _searchBar()
-        //   //             : UserTile(user: this._usersDisplay![index - 1]);
-        //   //       } else {
-        //   //         return LoadingView();
-        //   //       }
-        //   //     },
-        //   //     itemCount: _usersDisplay.length + 1,
-        //   //   ),
-        //   // ),
-        // ),
+        body:
+        SafeArea(
+          child:
+          Container(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                if (!_isLoading) {
+                  return index == 0
+                      ? _searchBar()
+                      : UserTile(user: this._usersDisplay[index - 1]);
+                } else {
+                  return LoadingView();
+                }
+              },
+              itemCount: _usersDisplay.length + 1,
+            ),
+          ),
+        ),
       ),
     );
   }

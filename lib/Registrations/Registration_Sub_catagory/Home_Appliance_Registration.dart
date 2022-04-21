@@ -27,7 +27,7 @@ class _HomeAplliance_RegPageState extends State<HomeAplliance_RegPage> {
   late bool status;
   late String message;
   //String serverUrl = "https://astrasoftware.in/directoryapp/Nileswaram.com/more_insert_test.php";
-  String serverUrl = "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Registration/Textile_Registration.php";
+  String serverUrl = "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Registration/HomeApplianc_Reg.php";
 
   @override
   void initState() {

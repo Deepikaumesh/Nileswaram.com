@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -44,7 +45,7 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/hotel/hoteldisplay.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Barbershop/barbershop.php";
     // old  table textile
     // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 
@@ -82,7 +83,7 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Barbershop",
+            "BeautyParler",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -101,13 +102,17 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
                 return Container(
                   child: Center(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircularProgressIndicator(),
+                        CircularProgressIndicator(
+                          color: Colors.red.shade900,
+                          strokeWidth: 5,
+                        ),
                         SizedBox(
                           height: 30,
                         ),
                         Text(
-                          "Loading Please Wait",
+                          "Data Loading Please Wait!",
                           style: TextStyle(),
                         ),
                       ],
@@ -122,7 +127,8 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
                         children: [
                           Container(
                             margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(30),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 8),
                             decoration: BoxDecoration(
                               color: Colors.blueGrey.shade100,
                               borderRadius: BorderRadius.circular(10),
@@ -134,102 +140,155 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
                               child: Column(
                                 children: [
                                   Row(
-                                    children: [
-                                      Text("Name:"),
-                                      Text(snapshot.data[index].name),
-                                    ],
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children:[
+                                      Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('assets/haircut.png'),
+                                              fit: BoxFit.fill
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 15,),
+                                      Text(
+                                        snapshot.data[index].name,
+                                        style: GoogleFonts.lora(
+                                            fontSize: 25,
+                                            color: Colors.pink.shade700),
+                                      ),
+                                    ],),
+                                  Text(
+                                    snapshot.data[index].address,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 6,
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.deepOrange.shade400, fontSize: 13),
                                   ),
+                                  SizedBox(height: 15,),
                                   Row(
                                     children: [
-                                      Text("Address:"),
-                                      Text(snapshot.data[index].address),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text("Phone No:"),
+                                      Image.asset(
+                                        "assets/tele.png",
+                                        height: 30,
+                                        width: 20,
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
                                       Text(snapshot.data[index].phone),
                                     ],
                                   ),
                                   Row(
                                     children: [
-                                      Text("Mobile No:"),
+                                      Image.asset(
+                                        "assets/mobile.png",
+                                        height: 30,
+                                        width: 20,
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
                                       Text(snapshot.data[index].mobile),
                                     ],
                                   ),
+                                  // Row(
+                                  //   children: [
+                                  //     Text("Blood Group:"),
+                                  //     Text(snapshot.data[index].blood),
+                                  //   ],
+                                  // ),
                                   Row(
                                     children: [
-                                      Text(
-                                        "Watsap No:",
-                                        style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
+                                      Image.asset(
+                                        "assets/internet.png",
+                                        height: 20,
+                                        width: 18,
+                                      ),
+                                      SizedBox(
+                                        width: 20,
                                       ),
                                       Text(
-                                        snapshot.data[index].watsap,
+                                        snapshot.data[index].website,
                                         style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
+                                          fontSize: 15,
+                                        ),
                                       ),
                                     ],
                                   ),
                                   Row(
                                     children: [
-                                      Text(
-                                        "Email Id:",
-                                        style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
+                                      Image.asset(
+                                        "assets/email.png",
+                                        height: 20,
+                                        width: 18,
+                                      ),
+                                      SizedBox(
+                                        width: 20,
                                       ),
                                       Text(
                                         snapshot.data[index].email,
                                         style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
+                                          fontSize: 15,
+                                        ),
                                       ),
                                     ],
                                   ),
                                   Row(
                                     children: [
-                                      Text("Website Address:",
-                                          style: GoogleFonts.prompt(
-                                              fontSize: 15,
-                                              color: Colors.red.shade900)),
-                                      Text(
-                                        snapshot.data[index].website,
-                                        style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
+                                      Image.asset(
+                                        "assets/blood.png",
+                                        height: 30,
+                                        width: 20,
                                       ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Text("Blood Group:",style: GoogleFonts.prompt(),),
+                                      SizedBox(width: 5,),
+                                      Text(snapshot.data[index].blood,style: GoogleFonts.prompt(color: Colors.red.shade900),),
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Instagram Id:",
-                                        style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
-                                      ),
-                                      Text(
-                                        snapshot.data[index].insta,
-                                        style: GoogleFonts.prompt(
-                                            fontSize: 15,
-                                            color: Colors.red.shade900),
-                                      ),
-                                    ],
+                                  SizedBox(
+                                    height: 5,
                                   ),
                                   Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text("Facebook Id:"),
-                                      Text(snapshot.data[index].facebook),
+                                      Column(
+                                        children: [
+                                          Image.asset(
+                                            "assets/watsap.png",
+                                            height: 50,
+                                            width: 30,
+                                          ),
+                                          Text(snapshot.data[index].watsap),
+                                        ],
+                                      ),
+                                      Column(children: [
+                                        Image.asset(
+                                          "assets/facebook.png",
+                                          height: 50,
+                                          width: 30,
+                                        ),
+                                        Text(snapshot.data[index].facebook),
+                                      ]),
+                                      Column(children: [
+                                        Image.asset(
+                                          "assets/instagram.png",
+                                          height: 50,
+                                          width: 30,
+                                        ),
+                                        Text(snapshot.data[index].insta),
+                                      ]),
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Text("Blood Group:"),
-                                      Text(snapshot.data[index].blood),
-                                    ],
+                                  SizedBox(
+                                    height: 5,
                                   ),
                                 ],
                               ),
@@ -237,15 +296,7 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
                           ),
                         ],
                       ),
-                    )
-                  //     ListTile(
-                  //   title: Text(snapshot.data[index].name),
-                  //   subtitle: Text(snapshot.data[index].address),
-                  //   trailing: Text(snapshot.data[index].phone),
-                  //
-                  //   contentPadding: EdgeInsets.only(bottom: 20.0),
-                  // ),
-                );
+                    ));
               }
             },
           ),

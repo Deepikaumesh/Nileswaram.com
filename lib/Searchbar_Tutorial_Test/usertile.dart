@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/userdetailspage.dart';
+import 'package:untitled1/Searchbar_Tutorial_Test/userdetailspage.dart';
 
-import '../Dummy/datamodel.dart';
+import 'datamodel.dart';
 
 class UserTile extends StatelessWidget {
   final User user;
@@ -46,10 +46,10 @@ class UserTile extends StatelessWidget {
             ),
             /// this function uses to navigate (move to next screen) User Details page and pass user objects into the User Details page. ///
             onTap: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => UserDetailsPage(user: user)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => UserDetailsPage(user: user)));
             },
           ),
           Divider(

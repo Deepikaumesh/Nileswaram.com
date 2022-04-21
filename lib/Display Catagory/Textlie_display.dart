@@ -45,7 +45,7 @@ class _Display_Textile_DataState extends State<Display_Textile_Data> {
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textiledisplayoriginal.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Textile/textiledisplayoriginal.php";
     // old  table textile
     // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 

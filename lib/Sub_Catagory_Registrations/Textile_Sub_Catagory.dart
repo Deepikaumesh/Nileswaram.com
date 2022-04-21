@@ -6,7 +6,7 @@ import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/Kids_S
 import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/Ladies_Section.dart';
 import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/UnderGarments_Section.dart';
 
-import '../Dummy/more_test.dart';
+import 'Textile_Sub_Sections/Family_store_Registration.dart';
 
 class Textile_Sub extends StatefulWidget {
   const Textile_Sub({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _Textile_SubState extends State<Textile_Sub> {
                       borderSide: BorderSide(color: Colors.black12)
                   ),
                   child: Center(child: TextButton(onPressed: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>test_more()));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Family_Store_RegPage()));
                   }, child:Text("Family Store",style: GoogleFonts.prompt(fontSize: 21,),)))),
 
               Card(

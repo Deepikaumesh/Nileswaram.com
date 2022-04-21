@@ -53,10 +53,10 @@ class _CarouselState extends State<Carousel> {
                 ),
               ),
             ),
-            // onTap: () {
-            //   var url = imageList[i];
-            //   print(url.toString());
-            // },
+            onTap: () {
+              // var url = imageList[i];
+              // print(url.toString());
+            },
           );
         },
       ),

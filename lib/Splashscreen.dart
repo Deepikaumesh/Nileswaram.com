@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'Home_Page.dart';
 
-
 //import 'package:flutter_icons/flutter_icons.dart';
 //import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +18,7 @@ class _HomeAppState extends State<HomeApp> {
 
     Timer(
       Duration(seconds: 2),
-          () => Navigator.pushReplacement(
+      () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Home()),
       ),
@@ -28,27 +27,32 @@ class _HomeAppState extends State<HomeApp> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-             body: Container(
-               padding: EdgeInsets.symmetric(horizontal: 50,vertical: 300),
-               height: MediaQuery.of(context).size.height,
-               width: MediaQuery.of(context).size.width,
-               child: Column(children:[
-                 Image.asset("assets/nileswram.png",height: 70,width: 70,),
-                 SizedBox(height: 10,),
-                 Text(
-                   "Nileshwaram.com",
-                   style: GoogleFonts.aclonica(
-                     color: Colors.red.shade900,
-                     fontSize: 15.0,
-                     fontWeight: FontWeight.w600,
-                   ),
-                 ),
-               ],
-               ),
+    return Container(
+      color: Colors.white,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
 
-        ),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/nileswram.png",
+                height: 45,
+                width: 45,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Nileshwaram.com",
+                style: GoogleFonts.aclonica(
+                  color: Colors.red.shade900,
+                  fontSize: 11.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
 
 
       ),

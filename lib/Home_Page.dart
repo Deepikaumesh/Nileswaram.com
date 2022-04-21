@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled1/Carousel/AdCarousel.dart';
 import 'package:untitled1/Carousel/NewsAndEventCarousel.dart';
-import 'Catagory/CatagoryContainer.dart';
 import 'Catagory/Catagory_image_buttons.dart';
 import 'Drawer.dart';
 import 'Searchbar.dart';
@@ -22,7 +21,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "Nileswaram.com",
+            "Nileshwaram.com",
             style: GoogleFonts.aclonica(
               color: Colors.red.shade900,
               fontSize: 22.0,
@@ -49,12 +48,6 @@ class _HomeState extends State<Home> {
                   style: GoogleFonts.prompt(
                       fontSize: 18, color: Colors.blueGrey.shade700),
                 ),
-
-                  // SizedBox(
-                  //   height: 5,
-                  // ),
-                 // CatagoryContainer(),
-                //  CatagoryimageButton(),
                   Carousel(),
                   SizedBox(
                     height: 15,

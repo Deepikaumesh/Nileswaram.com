@@ -1,229 +1,240 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'InputDeco_design.dart';
 import 'package:http/http.dart' as http;
-
-
-class Dummy_Post_Reg extends StatefulWidget {
+class FormPage extends StatefulWidget {
   @override
-  _Dummy_Post_RegState createState() => _Dummy_Post_RegState();
+  _FormPageState createState() => _FormPageState();
 }
+class _FormPageState extends State<FormPage> {
+  TextEditingController _name = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _phone = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  TextEditingController _confirmpassword = TextEditingController();
+ // final _formKey = GlobalKey<FormState>();
+  //final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  // @override
+  // void initState() {
+  //   _name = TextEditingController();
+  //   _email = TextEditingController();
+  //   _phone = TextEditingController();
+  //   _password= TextEditingController();
+  //   _confirmpassword = TextEditingController();
 
-class _Dummy_Post_RegState extends State<Dummy_Post_Reg> {
-  TextEditingController catagory = new TextEditingController();
-  TextEditingController  name= new TextEditingController();
-  TextEditingController address = new TextEditingController();
-  TextEditingController watsap = new TextEditingController();
-  TextEditingController phone = new TextEditingController();
-  TextEditingController phone_second = new TextEditingController();
-  TextEditingController blood = new TextEditingController();
-  late bool status;
-  late String message;
-  String serverUrl = "https://nostologic-complain.000webhostapp.com/dummydirectory.php";
-
-  @override
-  void initState() {
-    catagory = TextEditingController();
-    name = TextEditingController();
-    address = TextEditingController();
-    watsap = TextEditingController();
-    phone = TextEditingController();
-    phone_second = TextEditingController();
-    blood = TextEditingController();
-
-    status = false;
-    message = "";
-
-    super.initState();
-  }
-
-  Future<void> submitData() async {
-    var send = await http.post(Uri.parse(serverUrl), body: {
-      "catagory": catagory.text,
-      "name": name.text,
-      "address": address.text,
-      "watsap": watsap.text,
-      "phone": phone.text,
-      "phone_second": phone_second.text,
-      "blood": blood.text,
-    });
-    if (send.statusCode == 200) {
-      var data = json.decode(send.body);
-      var responseMessage = data["message"];
-      var responseError = data["error"];
-      if (responseError) {
-        setState(() {
-          status = false;
-          message = responseMessage;
-        });
-      } else {
-        catagory.clear();
-        name.clear();
-        address.clear();
-        watsap.clear();
-        phone.clear();
-        phone_second.clear();
-        blood.clear();
-
-        setState(() {
-          status = true;
-          message = responseMessage;
-        });
-      }
-    } else {
-      setState(() {
-        message = "Error:Server error";
-        status = false;
-      });
-    }
-  }
-
-  Widget _buildcatagory() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: catagory,
-        decoration: InputDecoration(labelText: "Enter Business Catagory"),
-        keyboardType: TextInputType.text,
-      ),
-    );
-  }
-
-  Widget _buildname() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: name,
-        decoration: InputDecoration(labelText: "Enter Business Name"),
-        keyboardType: TextInputType.text,
-      ),
-    );
-  }
-  Widget _buildaddress() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: address,
-        decoration: InputDecoration(labelText: "Enter Business Address"),
-        keyboardType: TextInputType.text,
-      ),
-    );
-  }
-
-  Widget _buildwatsap() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: watsap,
-        decoration: InputDecoration(labelText: "Enter Watsap Number"),
-        keyboardType: TextInputType.number,
-      ),
-    );
-  }
-  Widget _buildphone(){
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: phone,
-        decoration: InputDecoration(labelText: "Enter Phone Number"),
-        keyboardType: TextInputType.text,
-      ),
-    );
-  }
-
-  Widget _buildphone_second() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: phone_second,
-        decoration: InputDecoration(labelText: "Enter Second Phone "),
-        keyboardType: TextInputType.number,
-      ),
-    );
-  }
-
-  Widget _buildblood() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: TextField(
-        controller: blood,
-        decoration: InputDecoration(labelText: "Enter Blood Group"),
-        keyboardType: TextInputType.text,
-      ),
-    );
-  }
+  //
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Register"),
-      ),
-      body: Container(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              _buildcatagory(),
-              _buildname(),
-              _buildaddress(),
-              _buildwatsap(),
-              _buildphone(),
-              _buildphone_second(),
-              _buildblood(),
-              RaisedButton(
-                child: Text("Post"),
-                onPressed: () {
-                  setState(() {
-                    submitData();
-                  });
-                 // submitData();
-                },
-              ),
-              Text( status?message:message),
-            ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Form(
+           // key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 70,
+                  child: Image.network("https://protocoderspoint.com/wp-content/uploads/2020/10/PROTO-CODERS-POINT-LOGO-water-mark-.png"),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom:15,left: 10,right: 10),
+                  child: TextFormField(
+                    controller: _name,
+                    keyboardType: TextInputType.text,
+                    decoration: buildInputDecoration(Icons.person,"Full Name"),
+                    // validator: (String value){
+                    //   if(value.isEmpty)
+                    //   {
+                    //     return "Please enter name";
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (String name){
+                    // },
+                    // validator: (value) {
+                    //   if (value?.isEmpty ?? true) {
+                    //     return 'Please Enter Name';
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (value) {
+                    //   _name = value as TextEditingController;
+                    // },
+
+
+
+
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15,left: 10,right: 10),
+                  child: TextFormField(
+                    controller: _email,
+                    keyboardType: TextInputType.text,
+                    decoration:buildInputDecoration(Icons.email,"Email"),
+                    // validator: (String value){
+                    //   if(value.isEmpty)
+                    //   {
+                    //     return "Please enter  email";
+                    //   }
+                    //   if(!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value))
+                    //   {
+                    //     return "Please enter valid email";
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (String email){
+                    // },
+                    // validator: (value) {
+                    //   if (value?.isEmpty ?? true) {
+                    //     return 'Please Enter Name';
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (value) {
+                    //   _email = value as TextEditingController;
+                    // },
+
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15,left: 10,right: 10),
+                  child: TextFormField(
+                    controller: _phone,
+                    keyboardType: TextInputType.number,
+                    decoration:buildInputDecoration(Icons.phone,"Phone No"),
+                    // validator: (value){
+                    //   if(value.isEmpty)
+                    //   {
+                    //     return "Please enter  phone";
+                    //   }
+                    //   if(value.length < 9)
+                    //   {
+                    //     return "Please enter valid phone";
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (String phone){
+                    // },
+                    // validator: (value) {
+                    //   if (value?.isEmpty ?? true) {
+                    //     return 'Please Enter Name';
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (value) {
+                    //   _phone = value as TextEditingController;
+                    // },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15,left: 10,right: 10),
+                  child: TextFormField(
+                    controller: _password,
+                    keyboardType: TextInputType.text,
+                    decoration:buildInputDecoration(Icons.lock,"Password"),
+                    // validator: (String value){
+                    //   if(value.isEmpty)
+                    //   {
+                    //     return "Please enter password";
+                    //   }
+                    //   return null;
+                    // },
+                    // validator: (value) {
+                    //   if (value?.isEmpty ?? true) {
+                    //     return 'Please Enter Name';
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (value) {
+                    //   _password = value as TextEditingController;
+                    // },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15,left: 10,right: 10),
+                  child: TextFormField(
+                    controller: _confirmpassword,
+                    obscureText: true,
+                    keyboardType: TextInputType.text,
+                    decoration:buildInputDecoration(Icons.lock,"Confirm Password"),
+                    // validator: (String value){
+                    //   if(value.isEmpty)
+                    //   {
+                    //     return "Please enter re-password";
+                    //   }
+                    //   if(_password.text != _confirmpassword.text)
+                    //   {
+                    //     return "Password Do not match";
+                    //   }
+                    //   return null;
+                    // // },
+                    // validator: (value) {
+                    //   if (value?.isEmpty ?? true) {
+                    //     return 'Please Enter Name';
+                    //   }
+                    //   return null;
+                    // },
+                    // onSaved: (value) {
+                    //   _confirmpassword = value as TextEditingController;
+                    // },
+                  ),
+                ),
+                SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: RaisedButton(
+                    color: Colors.redAccent,
+                    onPressed: (){
+                      // if(_formKey.currentState.validate())
+                      // {
+                      setState(() {
+
+                      });
+                        RegistrationUser();
+                        //print("Successful");
+                      // }else
+                      // {
+                      //   print("Unsuccessfull");
+                      // }
+
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                        side: BorderSide(color: Colors.blue,width: 2)
+                    ),
+                    textColor:Colors.white,child: Text("Submit"),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-}
-class Data {
-  //late int id;
-  late String catagory;
-  late String name;
-  late String address;
-  late String watsap;
-  late String phone;
-  late String phone_second;
-  late String blood;
-
-
-  Data({
-    required this.name,
-    required this.catagory,
-    required this.address,
-    required this.watsap,
-    required this.phone_second,
-    required this.phone,
-    required this.blood,
-    //required this.id,
-  });
-  factory Data.fromjson(Map<String,dynamic>json)
-  {
-    return Data(
-      catagory:json['catagory'] ,
-      name:json['name'],
-      address:json['address'] ,
-      watsap:json['watsap'],
-      phone:json['p'] ,
-      phone_second:json['phone_second'],
-      blood:json['blood'] ,);
-
-
-
-    //id: json['id']);
+  Future RegistrationUser()  async{
+    // url to registration php script
+    var APIURL = "https://astrasoftware.in/directoryapp/dummy/registration.php";
+    //json maping user entered details
+    Map mapeddate ={
+      'name':_name.text,
+      'email':_email.text,
+      'phone':_phone.text,
+      'password':_password.text
+    };
+    print("json data:${mapeddate}");
+       //send  data using http post to our php code
+    http.Response reponse = await http.post(Uri.parse(APIURL),body: mapeddate);
+    //getting response from php code, here
+    var data = jsonDecode(reponse.body);
+    print("DATA: ${data}");
   }
 }
-
-//https://astrasoftware.in/directoryapp/getdata.php

@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled1/view_more.dart';
 
+import '../Display Catagory/Grocery_display.dart';
+import '../Display Catagory/HotelDisplay.dart';
+import '../Display Catagory/Textlie_display.dart';
+import '../Display_Sub_catagory/Hotel_Sub_Catagory_Display.dart';
+import '../Display_Sub_catagory/Textile_Sub_Catagory_Display.dart';
+
 class CatagoryimageButton extends StatefulWidget {
   @override
   CatagoryimageButtonState createState() => new CatagoryimageButtonState();
@@ -15,7 +21,8 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
 
     return Container(
       decoration: BoxDecoration(
-          color: Color(0xfffad4d4),
+        //  color: Color(0xfffad4d4),
+        color: Colors.blueGrey.shade100,
           borderRadius: BorderRadius.circular(10)
       ),
       padding: EdgeInsets.only(top: 10, left: 10, right: 10),
@@ -35,9 +42,14 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     height: 80.0,
                     width: 80.0,
                   ),
-                  TextButton(onPressed: () {}, child: Text("Textile",style:GoogleFonts.quicksand(color: Colors.pinkAccent,fontWeight: FontWeight.bold),))
-                
-                ],
+                  TextButton(onPressed: () {
+                  //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Textile_Data()));
+                  // }, child: Text("Textile",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
+
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Textile_Sub_Display()));
+  }, child: Text("Textile",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
+
+  ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +59,9 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     height: 80.0,
                     width: 80.0,
                   ),
-                  TextButton(onPressed: () {}, child: Text("Hotel",style:GoogleFonts.quicksand(color: Colors.teal,fontWeight: FontWeight.bold),))
+                  TextButton(onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Hotel_Sub_Display()));
+                  }, child: Text("Hotel",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
                   // new Text(
                   //   "shop",
                   //   style:
@@ -63,7 +77,9 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     height: 90.0,
                     width: 80.0,
                   ),
-                  TextButton(onPressed: () {}, child: Text("Grocery",style:GoogleFonts.quicksand(color: Colors.deepOrange,fontWeight: FontWeight.bold),))
+                  TextButton(onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Grocery_Display()));
+                  }, child: Text("Grocery",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
                   // new Text(
                   //   "shop",
                   //   style:

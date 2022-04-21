@@ -10,7 +10,7 @@ import 'package:untitled1/Registrations/Registration_Sub_catagory/MedicalShop_Re
 import 'package:untitled1/Registrations/Registration_Sub_catagory/barbershop_Registration.dart';
 import 'package:untitled1/Registrations/Registration_Sub_catagory/fruits&veg_Registration.dart';
 
-import '../Dummy/more_test.dart';
+import '../Sub_Catagory_Registrations/Textile_Sub_Sections/Family_store_Registration.dart';
 import '../Sub_Catagory_Registrations/Furniture_Sub_Catagory.dart';
 import '../Sub_Catagory_Registrations/Hotel_Sub_Catagory.dart';
 import '../Sub_Catagory_Registrations/Textile_Sub_Catagory.dart';
