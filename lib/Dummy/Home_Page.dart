@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled1/Carousel/AdCarousel.dart';
 import 'package:untitled1/Carousel/NewsAndEventCarousel.dart';
+import '../Carousel_Api_test.dart';
+import '../Drawer.dart';
 import 'Catagory/Catagory_image_buttons.dart';
-import 'Drawer.dart';
 import 'Searchbar.dart';
 
 class Home extends StatefulWidget {
@@ -75,6 +76,7 @@ class _HomeState extends State<Home> {
                   //       fontSize: 18, color: Colors.blueGrey.shade700),
                   // ),
                   Adcarousel(),
+
                 ],),
             ),
           ),

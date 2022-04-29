@@ -1,23 +1,39 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import  'package:http/http.dart ' as http;
 
-class Adcarousel extends StatefulWidget {
-  const Adcarousel({Key? key}) : super(key: key);
+class Carousel_test extends StatefulWidget {
+  const Carousel_test({Key? key}) : super(key: key);
 
   @override
-  _AdcarouselState createState() => _AdcarouselState();
+  _Carousel_testState createState() => _Carousel_testState();
 }
 
-class _AdcarouselState extends State<Adcarousel> {
-  final List<String> imageList = [
+class _Carousel_testState extends State<Carousel_test> {
+  //late  final List<String> imageList = [];
+  late List imageList;
+  bool  loading = true;
 
+  
+  fetchAllimage() async {
+    final response = await http.get(Uri.parse("https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/get_image.php"));
+      if (response.statusCode == 200){
+        setState(() {
+          imageList = jsonDecode(response.body);
+          loading = false;
+        });
+      }
+  }
+  @override
+  void initState(){
+    super.initState();
+    fetchAllimage();
+    print(imageList);
+  }
 
-   // "https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80",
-  //   'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  //   'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  //   'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-   ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +49,7 @@ class _AdcarouselState extends State<Adcarousel> {
           autoPlayInterval: Duration(seconds: 3),
           reverse: false,
           aspectRatio: 5.0,
+
         ),
         itemBuilder: (context, i, id) {
           //for onTap to redirect to another screen
@@ -47,16 +64,11 @@ class _AdcarouselState extends State<Adcarousel> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child:
-                Image.network(
-                  "https://jcizone19.in/._A_nileswaram/directoryapp/images/dressmall.jpg",
+                   imageList[i],
 
-                  //"https://astrasoftware.in/directoryapp/images/aiwa.jpg",
-                 // imageList[i],
-                  width: 500,
-                  fit: BoxFit.fill,
                 ),
               ),
-            ),
+
             // onTap: () {
             //   var url = imageList[i];
             //   print(url.toString());

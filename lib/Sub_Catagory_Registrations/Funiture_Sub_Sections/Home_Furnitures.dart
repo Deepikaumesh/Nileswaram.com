@@ -31,7 +31,7 @@ class _Home_Furnitures_CatagoryState extends State<Home_Furnitures_Catagory> {
 
   @override
   void initState() {
-    name = TextEditingController();
+    name = TextEditingController(text: 'home furniture shop-');
     address = TextEditingController();
     blood = TextEditingController();
     phone = TextEditingController();
@@ -110,7 +110,7 @@ class _Home_Furnitures_CatagoryState extends State<Home_Furnitures_Catagory> {
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: TextField(
         controller: name,
-        decoration: InputDecoration(labelText: "Enter name"),
+        decoration: InputDecoration(labelText: "Enter name",prefix: Text("(do not remove!)",),),
         keyboardType: TextInputType.text,
       ),
     );

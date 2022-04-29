@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'Dummy/dummy_post.dart';
-import 'Dummy/imageupload_test.dart';
-import 'Sub_Catagory_Registrations/Textile_Sub_Sections/Family_store_Registration.dart';
+import 'package:untitled1/About_Us.dart';
+import 'package:untitled1/Version.dart';
+import 'Dummy/Registrations/Event_Registration.dart';
+import 'Dummy/Registrations/News_Registration.dart';
 import 'Registrations/Ad_Registration.dart';
-import 'Registrations/Business_registration.dart';
-import 'Registrations/News_and_events_Registration.dart';
-import 'Dummy/Test_Post.dart';
 import 'Registrations/Shop_Registration.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -59,30 +56,32 @@ class MainDrawer extends StatelessWidget {
         //and let's copy that and modify it
 
         ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => About_Us()));
+          },
           leading: Icon(
             Icons.menu,
             color: Colors.blueGrey.shade900,
           ),
-          title: Text("About",style: GoogleFonts.prompt(fontSize: 15,)),
+          title: Text("About Us",
+              style: GoogleFonts.prompt(
+                fontSize: 15,
+              )),
         ),
-
         ListTile(
-          onTap: () {},
-          leading: Icon(
-            Icons.menu_book_rounded,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("Description",style: GoogleFonts.prompt(fontSize: 15),),
-        ),
-
-        ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Version()));
+          },
           leading: Icon(
             Icons.mobile_friendly_outlined,
             color: Colors.blueGrey.shade900,
           ),
-          title: Text("Version",style: GoogleFonts.prompt(fontSize: 15),),
+          title: Text(
+            "Version",
+            style: GoogleFonts.prompt(fontSize: 15),
+          ),
         ),
 
         ListTile(
@@ -96,19 +95,33 @@ class MainDrawer extends StatelessWidget {
             Icons.business,
             color: Colors.blueGrey.shade900,
           ),
-          title: Text("Business/Shop Registration",style: GoogleFonts.prompt(fontSize: 15)),
+          title: Text("Business/Shop Registration",
+              style: GoogleFonts.prompt(fontSize: 15)),
         ),
 
         ListTile(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => NewsAndEventsReg()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => News_Reg()));
           },
           leading: Icon(
             Icons.newspaper_rounded,
             color: Colors.blueGrey.shade900,
           ),
-          title: Text("News and Event Registration",style: GoogleFonts.prompt(fontSize: 15)),
+          title: Text("News Registration",
+              style: GoogleFonts.prompt(fontSize: 15)),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => EventReg()));
+          },
+          leading: Icon(
+            Icons.image,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Event Registration",
+              style: GoogleFonts.prompt(fontSize: 15)),
         ),
 
         ListTile(
@@ -120,34 +133,10 @@ class MainDrawer extends StatelessWidget {
             Icons.web_asset_sharp,
             color: Colors.blueGrey.shade900,
           ),
-          title: Text("Advertaisement Rgistration",style: GoogleFonts.prompt(fontSize: 15)),
+          title: Text("Advertaisement Registration",
+              style: GoogleFonts.prompt(fontSize: 15)),
         ),
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ImageUpload()));
-          },
-          leading: Icon(
-            Icons.album_rounded,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("image upload test"),
-        ),
-
-        // ListTile(
-        //   onTap: () {
-        //     Navigator.push(
-        //         context, MaterialPageRoute(builder: (context) => test_more()));
-        //   },
-        //   leading: Icon(
-        //     Icons.album_rounded,
-        //     color: Colors.blueGrey.shade900,
-        //   ),
-        //   title: Text("dummy post2"),
-        // ),
-
-      ]),
+            ]),
     );
-
   }
 }

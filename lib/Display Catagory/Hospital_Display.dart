@@ -140,28 +140,31 @@ class _hospital_DisplayState extends State<hospital_Display> {
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children:[
-                                      Container(
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          image: DecorationImage(
-                                              image: AssetImage('assets/med.png'),
-                                              fit: BoxFit.fill
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children:[
+                                        Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            image: DecorationImage(
+                                                image: AssetImage('assets/med.png'),
+                                                fit: BoxFit.fill
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(width: 15,),
-                                      Text(
-                                        snapshot.data[index].name,
-                                        style: GoogleFonts.lora(
-                                            fontSize: 25,
-                                            color: Colors.pink.shade700),
-                                      ),
-                                    ],),
+                                        SizedBox(width: 15,),
+                                        Text(
+                                          snapshot.data[index].name,
+                                          style: GoogleFonts.lora(
+                                              fontSize: 25,
+                                              color: Colors.pink.shade700),
+                                        ),
+                                      ],),
+                                  ),
                                   Text(
                                     snapshot.data[index].address,
                                     overflow: TextOverflow.ellipsis,

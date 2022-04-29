@@ -31,7 +31,7 @@ class _hospital_Reg_PageState extends State<hospital_Reg_Page> {
 
   @override
   void initState() {
-    name = TextEditingController();
+    name = TextEditingController(text: 'hospital-');
     address = TextEditingController();
     blood = TextEditingController();
     phone = TextEditingController();
@@ -110,7 +110,7 @@ class _hospital_Reg_PageState extends State<hospital_Reg_Page> {
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: TextField(
         controller: name,
-        decoration: InputDecoration(labelText: "Enter name"),
+        decoration: InputDecoration(labelText: "Enter name",prefix: Text("(do not remove!)",),),
         keyboardType: TextInputType.text,
       ),
     );

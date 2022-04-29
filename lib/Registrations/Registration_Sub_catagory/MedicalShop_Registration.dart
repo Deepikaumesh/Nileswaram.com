@@ -31,7 +31,7 @@ class _MedicalShop_RegPageState extends State<MedicalShop_RegPage> {
 
   @override
   void initState() {
-    name = TextEditingController();
+    name = TextEditingController(text: 'medical Shop-');
     address = TextEditingController();
     blood = TextEditingController();
     phone = TextEditingController();
@@ -110,8 +110,9 @@ class _MedicalShop_RegPageState extends State<MedicalShop_RegPage> {
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: TextField(
         controller: name,
-        decoration: InputDecoration(labelText: "Enter name"),
-        keyboardType: TextInputType.text,
+        decoration: InputDecoration(labelText: "Enter name",prefix: Text("(do not remove!)",),),
+        keyboardType: TextInputType.multiline ,
+        maxLines: 3,
       ),
     );
   }

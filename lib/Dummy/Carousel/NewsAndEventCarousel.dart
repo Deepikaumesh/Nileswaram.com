@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class Carousel extends StatefulWidget {
-  const Carousel({Key? key}) : super(key: key);
+class Karou extends StatefulWidget {
+  const Karou({Key? key}) : super(key: key);
 
   @override
-  _CarouselState createState() => _CarouselState();
+  _KarouState createState() => _KarouState();
 }
 
-class _CarouselState extends State<Carousel> {
+class _KarouState extends State<Karou> {
   final List<String> imageList = [
     //"https://astrasoftware.in:2083/cpsess0923177201/viewer/home%2fjastrasoftware%2fpublic_html%2fdirectoryapp%2fimages/aiwa.jpg",
     "https://astrasoftware.in/directoryapp/images/colors.jpg"

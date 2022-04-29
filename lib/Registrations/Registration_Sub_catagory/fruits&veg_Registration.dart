@@ -31,7 +31,7 @@ class _Fruits$Veg_RegPageState extends State<Fruits$Veg_RegPage> {
 
   @override
   void initState() {
-    name = TextEditingController();
+    name = TextEditingController(text: 'fruits&vegitables-');
     address = TextEditingController();
     blood = TextEditingController();
     phone = TextEditingController();
@@ -110,7 +110,7 @@ class _Fruits$Veg_RegPageState extends State<Fruits$Veg_RegPage> {
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: TextField(
         controller: name,
-        decoration: InputDecoration(labelText: "Enter name"),
+        decoration: InputDecoration(labelText: "Enter name",prefix: Text("(do not remove!)",),),
         keyboardType: TextInputType.text,
       ),
     );

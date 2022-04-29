@@ -55,10 +55,16 @@ class View_MoreState extends State<View_More> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
 
-                      new Image.asset(
-                        'assets/furniture.png',
-                        height: 80.0,
-                        width: 80.0,
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Furniture_Sub_Display()));
+
+                        },
+                        child: new Image.asset(
+                          'assets/furniture.png',
+                          height: 80.0,
+                          width: 80.0,
+                        ),
                       ),
                       TextButton(onPressed: () {
                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Furniture_Sub_Display()));
@@ -69,10 +75,16 @@ class View_MoreState extends State<View_More> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      new Image.asset(
-                        'assets/wrench.png',
-                        height: 80.0,
-                        width: 80.0,
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Hardware_Display()));
+
+                        },
+                        child: new Image.asset(
+                          'assets/wrench.png',
+                          height: 80.0,
+                          width: 80.0,
+                        ),
                       ),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Hardware_Display()));
@@ -88,10 +100,15 @@ class View_MoreState extends State<View_More> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
 
-                      new Image.asset(
-                        'assets/makeup.png',
-                        height: 80.0,
-                        width: 80.0,
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>BeautyParler_Display()));
+                        },
+                        child: new Image.asset(
+                          'assets/makeup.png',
+                          height: 80.0,
+                          width: 80.0,
+                        ),
                       ),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>BeautyParler_Display()));
@@ -102,10 +119,15 @@ class View_MoreState extends State<View_More> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      new Image.asset(
-                        'assets/barber.png',
-                        height: 80.0,
-                        width: 80.0,
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>BarberShop_Display()));
+                        },
+                        child: new Image.asset(
+                          'assets/barber.png',
+                          height: 80.0,
+                          width: 80.0,
+                        ),
                       ),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>BarberShop_Display()));
@@ -123,10 +145,15 @@ class View_MoreState extends State<View_More> {
 
                       Padding(
                         padding:EdgeInsets.only(right: 22),
-                        child: new Image.asset(
-                          'assets/home-appliance.png',
-                          height: 80.0,
-                          width: 80.0,
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeAppliance_Display()));
+                          },
+                          child: new Image.asset(
+                            'assets/home-appliance.png',
+                            height: 80.0,
+                            width: 80.0,
+                          ),
                         ),
                       ),
                       TextButton(onPressed: () {
@@ -140,10 +167,16 @@ class View_MoreState extends State<View_More> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(right: 12),
-                        child: new Image.asset(
-                          'assets/pharmacy.png',
-                          height: 80.0,
-                          width: 80.0,
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalShop_Display()));
+
+                          },
+                          child: new Image.asset(
+                            'assets/pharmacy.png',
+                            height: 80.0,
+                            width: 80.0,
+                          ),
                         ),
                       ),
                       TextButton(onPressed: () {
@@ -167,10 +200,15 @@ class View_MoreState extends State<View_More> {
 
                       Padding(
                         padding: EdgeInsets.only(right: 22),
-                        child: new Image.asset(
-                          'assets/market.png',
-                          height: 80.0,
-                          width: 80.0,
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Fruits_Veg_Display()));
+                          },
+                          child: new Image.asset(
+                            'assets/market.png',
+                            height: 80.0,
+                            width: 80.0,
+                          ),
                         ),
                       ),
                       TextButton(onPressed: () {
@@ -186,10 +224,15 @@ class View_MoreState extends State<View_More> {
                     children: [
                       Padding(padding: EdgeInsets.only(right: 12),
 
-                      child: Image.asset(
-                        'assets/hospital.png',
-                        height: 80.0,
-                        width: 80.0,
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>hospital_Display()));
+                        },
+                        child: Image.asset(
+                          'assets/hospital.png',
+                          height: 80.0,
+                          width: 80.0,
+                        ),
                       ),),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>hospital_Display()));

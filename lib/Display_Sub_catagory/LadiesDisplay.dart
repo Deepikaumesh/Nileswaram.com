@@ -138,28 +138,31 @@ class _Display_Ladies_dataState extends State<Display_Ladies_data> {
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children:[
-                                          Container(
-                                            width: 50,
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                  image: AssetImage('assets/woman.png'),
-                                                  fit: BoxFit.fill
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children:[
+                                            Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                    image: AssetImage('assets/woman.png'),
+                                                    fit: BoxFit.fill
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          SizedBox(width: 15,),
-                                          Text(
-                                            snapshot.data[index].name,
-                                            style: GoogleFonts.lora(
-                                                fontSize: 25,
-                                                color: Colors.pink.shade700),
-                                          ),
-                                      ],),
+                                            SizedBox(width: 15,),
+                                            Text(
+                                              snapshot.data[index].name,
+                                              style: GoogleFonts.lora(
+                                                  fontSize: 25,
+                                                  color: Colors.pink.shade700),
+                                            ),
+                                        ],),
+                                      ),
                                       Text(
                                         snapshot.data[index].address,
                                         overflow: TextOverflow.ellipsis,

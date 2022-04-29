@@ -1,18 +1,21 @@
 import 'dart:async';
+import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Home_Page.dart';
 
+
 //import 'package:flutter_icons/flutter_icons.dart';
 //import 'package:google_fonts/google_fonts.dart';
 
-class HomeApp extends StatefulWidget {
-  _HomeAppState createState() => _HomeAppState();
+class Splash_screen extends StatefulWidget {
+  _Splash_screenState createState() => _Splash_screenState();
 }
 
-class _HomeAppState extends State<HomeApp> {
+class _Splash_screenState extends State<Splash_screen> {
   void initState() {
     super.initState();
 
