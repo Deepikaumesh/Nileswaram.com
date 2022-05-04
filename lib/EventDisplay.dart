@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:http/http.dart' as http;
 
-class Adcarousel extends StatefulWidget {
-  const Adcarousel({Key? key}) : super(key: key);
+class CustEventDisplay extends StatefulWidget {
+  const CustEventDisplay({Key? key}) : super(key: key);
 
   @override
-  _AdcarouselState createState() => _AdcarouselState();
+  _CustEventDisplayState createState() => _CustEventDisplayState();
 }
 
-class _AdcarouselState extends State<Adcarousel> {
+class _CustEventDisplayState extends State<CustEventDisplay> {
   var imageList;
 
   //late List imageList;
@@ -20,11 +20,11 @@ class _AdcarouselState extends State<Adcarousel> {
   String imagefolder =
   //"https://jcizone19.in/._A_nileswaram/directoryapp/images/";
   // "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/";
-      "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/adimages/";
+      "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/eventimages/";
 
   fetchAllImage() async {
     final response = await http.get(Uri.parse(
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/get_image.php"));
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/eventdisplay.php"));
     if (response.statusCode == 200) {
       setState(() {
         imageList = jsonDecode(response.body);

@@ -7,7 +7,7 @@ import 'Catagory/Catagory_image_buttons.dart';
 import 'Display Catagory/news_Display.dart';
 import 'Drawer.dart';
 import 'Dummy/Searchbar.dart';
-import 'Event_carousel.dart';
+import 'EventDisplay.dart';
 import 'News_container.dart';
 
 class Home extends StatefulWidget {
@@ -107,7 +107,10 @@ class _HomeState extends State<Home> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+
                     Adcarousel(),
+
+
                     Text(
                       "News",
                       style: GoogleFonts.prompt(
@@ -157,17 +160,9 @@ class _HomeState extends State<Home> {
                           fontSize: 18, color: Colors.blueGrey.shade900),
                     ),
 
-                    Events_Carousel(),
-                    TextButton(
-                        onPressed: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) => View_More()));
-                        },
-                        child: Text(
-                          "View More>>",
-                          style: GoogleFonts.quicksand(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
-                        )),
+                  //  EventDisplay(),
+                    CustEventDisplay(),
+
                   ],
                 ),
               ),

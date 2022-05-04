@@ -47,7 +47,8 @@ dependencies:
   searchable_dropdown: ^1.1.0
   image_picker: ^0.8.5
   get: ^4.3.8
-
+  path_provider:
+  image:
 
 
 

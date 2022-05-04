@@ -84,46 +84,58 @@ class MainDrawer extends StatelessWidget {
           ),
         ),
 
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Business_Reg_Catagory()));
-          },
-          leading: Icon(
-            Icons.business,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("Business/Shop Registration",
-              style: GoogleFonts.prompt(fontSize: 15)),
-        ),
-
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => News_Reg()));
-          },
-          leading: Icon(
-            Icons.newspaper_rounded,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("News Registration",
-              style: GoogleFonts.prompt(fontSize: 15)),
-        ),
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => EventReg()));
-          },
-          leading: Icon(
-            Icons.image,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("Event Registration",
-              style: GoogleFonts.prompt(fontSize: 15)),
-        ),
-
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => Business_Reg_Catagory()));
+        //   },
+        //   leading: Icon(
+        //     Icons.business,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("Business/Shop Registration",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
+        //
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(
+        //         context, MaterialPageRoute(builder: (context) => News_Reg()));
+        //   },
+        //   leading: Icon(
+        //     Icons.newspaper_rounded,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("News Registration",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(
+        //         context, MaterialPageRoute(builder: (context) => EventReg()));
+        //   },
+        //   leading: Icon(
+        //     Icons.image,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("Event Registration",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
+        //
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(context,
+        //         MaterialPageRoute(builder: (context) => AdRegistration()));
+        //   },
+        //   leading: Icon(
+        //     Icons.web_asset_sharp,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("Advertaisement Registration",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
         ListTile(
           onTap: () {
             Navigator.push(context,

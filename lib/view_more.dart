@@ -11,6 +11,7 @@ import 'Display Catagory/BarberShop_Display.dart';
 import 'Display Catagory/Furniture_Display.dart';
 import 'Display Catagory/Hardware_Display.dart';
 import 'Display_Sub_catagory/Furniture_Sub_Catagory_Display.dart';
+import 'Newcatagory_display.dart';
 
 
 
@@ -242,12 +243,20 @@ class View_MoreState extends State<View_More> {
                       //   style:
                       //       TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
                       // )
+
                     ],
                   ),
                 ],
               ),
 
+              TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>New_Cato()));
 
+                },
+                child: Text('View More'),
+
+              )
 
 
 

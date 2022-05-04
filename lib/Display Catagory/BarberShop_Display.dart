@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../Detail_Page_Navigation/barber_detail.dart';
+
 //Creating a class user to store the data;
 class User {
   // final String id;
@@ -125,175 +127,180 @@ class _BarberShop_DisplayState extends State<BarberShop_Display> {
                     itemBuilder: (ctx, index) => SingleChildScrollView(
                       child: Column(
                         children: [
-                          Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 8),
-                            decoration: BoxDecoration(
-                              color: Colors.blueGrey.shade100,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            height:
-                            MediaQuery.of(context).size.height / 2.5,
-                            width: MediaQuery.of(context).size.width / 1,
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children:[
-                                        Container(
-                                          width: 30,
-                                          height: 30,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            image: DecorationImage(
-                                                image: AssetImage('assets/haircut.png'),
-                                                fit: BoxFit.fill
+                          GestureDetector(
+                            // onTap: (){
+                            //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Barber_deatl(user:U)));
+                            // },
+                            child: Container(
+                              margin: EdgeInsets.all(10),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 8),
+                              decoration: BoxDecoration(
+                                color: Colors.blueGrey.shade100,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              height:
+                              MediaQuery.of(context).size.height / 2.5,
+                              width: MediaQuery.of(context).size.width / 1,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children:[
+                                          Container(
+                                            width: 30,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.rectangle,
+                                              image: DecorationImage(
+                                                  image: AssetImage('assets/haircut.png'),
+                                                  fit: BoxFit.fill
+                                              ),
                                             ),
                                           ),
+                                          SizedBox(width: 15,),
+                                          Text(
+                                            snapshot.data[index].name,
+                                            style: GoogleFonts.lora(
+                                                fontSize: 25,
+                                                color: Colors.pink.shade700),
+                                          ),
+                                        ],),
+                                    ),
+                                    Text(
+                                      snapshot.data[index].address,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 6,
+                                      style: GoogleFonts.prompt(
+                                          color: Colors.deepOrange.shade400, fontSize: 13),
+                                    ),
+                                    SizedBox(height: 15,),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/tele.png",
+                                          height: 30,
+                                          width: 20,
                                         ),
-                                        SizedBox(width: 15,),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(snapshot.data[index].phone),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/mobile.png",
+                                          height: 30,
+                                          width: 20,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(snapshot.data[index].mobile),
+                                      ],
+                                    ),
+                                    // Row(
+                                    //   children: [
+                                    //     Text("Blood Group:"),
+                                    //     Text(snapshot.data[index].blood),
+                                    //   ],
+                                    // ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/internet.png",
+                                          height: 20,
+                                          width: 18,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
                                         Text(
-                                          snapshot.data[index].name,
-                                          style: GoogleFonts.lora(
-                                              fontSize: 25,
-                                              color: Colors.pink.shade700),
+                                          snapshot.data[index].website,
+                                          style: GoogleFonts.prompt(
+                                            fontSize: 15,
+                                          ),
                                         ),
-                                      ],),
-                                  ),
-                                  Text(
-                                    snapshot.data[index].address,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 6,
-                                    style: GoogleFonts.prompt(
-                                        color: Colors.deepOrange.shade400, fontSize: 13),
-                                  ),
-                                  SizedBox(height: 15,),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/tele.png",
-                                        height: 30,
-                                        width: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(snapshot.data[index].phone),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/mobile.png",
-                                        height: 30,
-                                        width: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(snapshot.data[index].mobile),
-                                    ],
-                                  ),
-                                  // Row(
-                                  //   children: [
-                                  //     Text("Blood Group:"),
-                                  //     Text(snapshot.data[index].blood),
-                                  //   ],
-                                  // ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/internet.png",
-                                        height: 20,
-                                        width: 18,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        snapshot.data[index].website,
-                                        style: GoogleFonts.prompt(
-                                          fontSize: 15,
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/email.png",
+                                          height: 20,
+                                          width: 18,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/email.png",
-                                        height: 20,
-                                        width: 18,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        snapshot.data[index].email,
-                                        style: GoogleFonts.prompt(
-                                          fontSize: 15,
+                                        SizedBox(
+                                          width: 20,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/blood.png",
-                                        height: 30,
-                                        width: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text("Blood Group:",style: GoogleFonts.prompt(),),
-                                      SizedBox(width: 5,),
-                                      Text(snapshot.data[index].blood,style: GoogleFonts.prompt(color: Colors.red.shade900),),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Column(
-                                        children: [
+                                        Text(
+                                          snapshot.data[index].email,
+                                          style: GoogleFonts.prompt(
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/blood.png",
+                                          height: 30,
+                                          width: 20,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text("Blood Group:",style: GoogleFonts.prompt(),),
+                                        SizedBox(width: 5,),
+                                        Text(snapshot.data[index].blood,style: GoogleFonts.prompt(color: Colors.red.shade900),),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Image.asset(
+                                              "assets/watsap.png",
+                                              height: 50,
+                                              width: 30,
+                                            ),
+                                            Text(snapshot.data[index].watsap),
+                                          ],
+                                        ),
+                                        Column(children: [
                                           Image.asset(
-                                            "assets/watsap.png",
+                                            "assets/facebook.png",
                                             height: 50,
                                             width: 30,
                                           ),
-                                          Text(snapshot.data[index].watsap),
-                                        ],
-                                      ),
-                                      Column(children: [
-                                        Image.asset(
-                                          "assets/facebook.png",
-                                          height: 50,
-                                          width: 30,
-                                        ),
-                                        Text(snapshot.data[index].facebook),
-                                      ]),
-                                      Column(children: [
-                                        Image.asset(
-                                          "assets/instagram.png",
-                                          height: 50,
-                                          width: 30,
-                                        ),
-                                        Text(snapshot.data[index].insta),
-                                      ]),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
+                                          Text(snapshot.data[index].facebook),
+                                        ]),
+                                        Column(children: [
+                                          Image.asset(
+                                            "assets/instagram.png",
+                                            height: 50,
+                                            width: 30,
+                                          ),
+                                          Text(snapshot.data[index].insta),
+                                        ]),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
