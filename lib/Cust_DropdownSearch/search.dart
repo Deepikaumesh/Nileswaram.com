@@ -5,19 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:untitled1/Drop_down_search/user_details.dart';
+import 'package:untitled1/Cust_DropdownSearch/user_details.dart';
 
-class Searchbar_Home extends StatefulWidget {
-  const Searchbar_Home({Key? key}) : super(key: key);
+
+class Cust_Searchbar_Home extends StatefulWidget {
+  const Cust_Searchbar_Home({Key? key}) : super(key: key);
 
   @override
-  _Searchbar_HomeState createState() => _Searchbar_HomeState();
+  _Cust_Searchbar_HomeState createState() => _Cust_Searchbar_HomeState();
 }
 
-class _Searchbar_HomeState extends State<Searchbar_Home> {
+class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
   TextEditingController controller = new TextEditingController();
-  List<UserDetails> _searchResult = [];
-  List<UserDetails> _userDetails = [];
+  List<Cust_UserDetails> _searchResult = [];
+  List<Cust_UserDetails> _userDetails = [];
   final String url =
       // "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/search.php";
       "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/tableconnection.php";
@@ -27,7 +28,7 @@ class _Searchbar_HomeState extends State<Searchbar_Home> {
     final responsejson = json.decode(response.body);
     setState(() {
       for (Map user in responsejson) {
-        _userDetails.add(UserDetails.fromJson(user));
+        _userDetails.add(Cust_UserDetails.fromJson(user));
       }
     });
   }
@@ -64,9 +65,19 @@ class _Searchbar_HomeState extends State<Searchbar_Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red.shade900,
-        title: Text("Search for shops/business", style: GoogleFonts.prompt()),
         elevation: 0,
+        centerTitle: true,
+        backgroundColor:  Colors.red.shade900,
+        title: Text(
+          "Search for Shops/Business",
+          style: GoogleFonts.prompt(fontSize: 22),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded,size: 35,),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Column(
         children: [

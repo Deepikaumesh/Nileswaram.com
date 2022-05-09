@@ -9,12 +9,12 @@
 
 import 'dart:convert';
 
-List<UserDetails> userModelFromJson(String str) => List<UserDetails>.from(json.decode(str).map((x) => UserDetails.fromJson(x)));
+List<Cust_UserDetails> userModelFromJson(String str) => List<Cust_UserDetails>.from(json.decode(str).map((x) => Cust_UserDetails.fromJson(x)));
 
-String userModelToJson(List<UserDetails> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String userModelToJson(List<Cust_UserDetails> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class UserDetails {
-  UserDetails({
+class Cust_UserDetails {
+  Cust_UserDetails({
     required this.id,
     required this.name,
     required this.address,
@@ -40,7 +40,7 @@ class UserDetails {
   String facebook;
   String insta;
 
-  factory UserDetails.fromJson(Map<dynamic, dynamic> json) => UserDetails(
+  factory Cust_UserDetails.fromJson(Map<dynamic, dynamic> json) => Cust_UserDetails(
     id: json["id"],
     name: json["name"],
     address: json["address"],

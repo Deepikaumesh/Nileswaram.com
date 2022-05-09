@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../Drop_down_search/search.dart';
-
+import 'package:untitled1/Cust_DropdownSearch/search.dart';
 
 
-class Search_Bar extends StatefulWidget {
-  const Search_Bar({Key? key}) : super(key: key);
+
+
+
+
+class Cust_Search_Bar extends StatefulWidget {
+  const Cust_Search_Bar({Key? key}) : super(key: key);
 
   @override
-  _Search_BarState createState() => _Search_BarState();
+  _Cust_Search_BarState createState() => _Cust_Search_BarState();
 }
 
-class _Search_BarState extends State<Search_Bar> {
+class _Cust_Search_BarState extends State<Cust_Search_Bar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +26,7 @@ class _Search_BarState extends State<Search_Bar> {
         child: TextField(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Searchbar_Home()));
+                context, MaterialPageRoute(builder: (context) => Cust_Searchbar_Home()));
           },
           textAlign: TextAlign.start,
           textAlignVertical: TextAlignVertical.center,
