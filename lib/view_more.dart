@@ -11,7 +11,9 @@ import 'Display Catagory/BarberShop_Display.dart';
 import 'Display Catagory/Furniture_Display.dart';
 import 'Display Catagory/Hardware_Display.dart';
 import 'Display_Sub_catagory/Furniture_Sub_Catagory_Display.dart';
+import 'Display_Sub_catagory/OfficefurnitureDisplay.dart';
 import 'Newcatagory_display.dart';
+import 'Display_new_sub_catagory.dart';
 
 
 
@@ -28,14 +30,14 @@ class View_MoreState extends State<View_More> {
     // TODO: implement build
 
     return Scaffold(
-      appBar: AppBar(title: Text("View More Catagory",style: GoogleFonts.prompt(color: Colors.red.shade900),),
+      appBar: AppBar(title: Text("View More Category",style: GoogleFonts.prompt(color: Colors.red.shade900),),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
         leading: GestureDetector(
           onTap: () { Navigator.pop(context);},
           child: Icon(
-            Icons.arrow_back_rounded,color: Colors.red.shade900,  // add custom icons also
+            Icons.arrow_back_rounded,color: Colors.red.shade900, size: 30, // add custom icons also
           ),
         ), ),
       body: Container(
@@ -58,7 +60,7 @@ class View_MoreState extends State<View_More> {
 
                       GestureDetector(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Furniture_Sub_Display()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Officeurniture_data()));
 
                         },
                         child: new Image.asset(
@@ -68,7 +70,7 @@ class View_MoreState extends State<View_More> {
                         ),
                       ),
                       TextButton(onPressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Furniture_Sub_Display()));
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Officeurniture_data()));
                       }, child: Text("Furniture",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
 
                     ],
@@ -249,14 +251,22 @@ class View_MoreState extends State<View_More> {
                 ],
               ),
 
-              TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>New_Cato()));
-
-                },
-                child: Text('View More'),
-
-              )
+              // TextButton(
+              //   onPressed: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>New_Cato()));
+              //
+              //   },
+              //   child: Text('View More'),
+              //
+              // ),
+              // TextButton(
+              //   onPressed: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>New_Sub_Cat()));
+              //
+              //   },
+              //   child: Text('View More Sub Category'),
+              //
+              // )
 
 
 

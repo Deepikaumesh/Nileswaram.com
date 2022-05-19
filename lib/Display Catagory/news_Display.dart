@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -64,7 +65,7 @@ class _News_DisplayState extends State<News_Display> {
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded),
+            icon: Icon(Icons.arrow_back_rounded,size: 35,),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -100,51 +101,51 @@ class _News_DisplayState extends State<News_Display> {
                 return ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (ctx, index) => SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(10),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 8),
-                                decoration: BoxDecoration(
-                                  color: Colors.white30,
-                                  borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 2,
-                                    ),
-                                ),
-
-                                height:
-                                    MediaQuery.of(context).size.height / 2.5,
-                                width: MediaQuery.of(context).size.width / 1,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        snapshot.data[index].name,
-                                        style: GoogleFonts.lora(
-                                            fontSize: 25,
-                                            color: Colors.pink.shade700),
-                                      ),
-                                      Text(
-                                        snapshot.data[index].address,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 6,
-                                        style: GoogleFonts.prompt(
-                                            color: Colors.deepOrange.shade400,
-                                            fontSize: 13),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.white30,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 2,
                               ),
-                            ],
+                            ),
+
+                            height:
+                            MediaQuery.of(context).size.height / 2.5,
+                            width: MediaQuery.of(context).size.width / 1,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text(
+                                    snapshot.data[index].name,
+                                    style: GoogleFonts.lora(
+                                        fontSize: 25,
+                                        color: Colors.pink.shade700),
+                                  ),
+                                  Text(
+                                    snapshot.data[index].address,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 6,
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.deepOrange.shade400,
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ));
+                        ],
+                      ),
+                    ));
               }
             },
           ),

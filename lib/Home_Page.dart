@@ -4,9 +4,9 @@ import 'package:untitled1/Carousel/AdCarousel.dart';
 import 'package:untitled1/view_more.dart';
 import 'About_Us.dart';
 import 'Catagory/Catagory_image_buttons.dart';
+import 'Cust_DropdownSearch/Searchbar.dart';
 import 'Display Catagory/news_Display.dart';
 import 'Drawer.dart';
-import 'Dummy/Searchbar.dart';
 import 'EventDisplay.dart';
 import 'News_container.dart';
 
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Nileshwaram.com",
+          "Nileswaram.com",
           style: GoogleFonts.aclonica(
             color: Colors.red.shade900,
             fontSize: 22.0,
@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                   Icons.menu_open_rounded,
                   size: 30,
                 )),
-            label: 'Catagory',
+            label: 'Category',
           ),
 
 
@@ -101,7 +101,12 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [
-          Search_Bar(),
+
+
+          Cust_Search_Bar(),
+
+
+
           Expanded(
             child: Container(
               child: SingleChildScrollView(
@@ -109,6 +114,7 @@ class _HomeState extends State<Home> {
                   children: [
 
                     Adcarousel(),
+                    SizedBox(height:30 ,),
 
 
                     Text(
@@ -118,7 +124,7 @@ class _HomeState extends State<Home> {
                         color: Colors.blueGrey.shade900,
                       ),
                     ),
-                    // Carousel(),
+                    SizedBox(height: 15,),
 
                     News(),
                     TextButton(
@@ -137,7 +143,7 @@ class _HomeState extends State<Home> {
                       height: 15,
                     ),
                     Text(
-                      "Select Catagory",
+                      "Select Category",
                       style: GoogleFonts.prompt(
                           fontSize: 18, color: Colors.blueGrey.shade900),
                     ),

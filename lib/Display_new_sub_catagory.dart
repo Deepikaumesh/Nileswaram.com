@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-//Creating a class user to store the data;
+
 class User {
-  // final String id;
+  final String catname;
   final String name;
   final String address;
   final String phone;
@@ -18,10 +18,9 @@ class User {
   final String insta;
   final String facebook;
   final String blood;
-  final String other_pro;
 
   User({
-    // required this.id,
+    required this.catname,
     required this.name,
     required this.address,
     required this.phone,
@@ -32,52 +31,53 @@ class User {
     required this.insta,
     required this.facebook,
     required this.blood,
-    required this.other_pro,
   });
 }
 
-class Display_Familystore_data extends StatefulWidget {
-  @override
-  _Display_Familystore_dataState createState() => _Display_Familystore_dataState();
+Future<List<User>> getRequest() async {
+  //replace your restFull API here.
+  String url =
+      "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/New_subcatagory_display.php";
+  // old  table textile
+  // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
+
+  final response = await http.get(Uri.parse(url));
+
+  var responseData = json.decode(response.body);
+
+  //Creating a list to store input data;
+  List<User> users = [];
+  for (var singleUser in responseData) {
+    User user = User(
+      //id:  singleUser["id"].toString(),
+      catname: singleUser["catname"].toString(),
+      name: singleUser["name"].toString(),
+      address: singleUser["address"].toString(),
+      phone: singleUser["phone"].toString(),
+      mobile: singleUser["mobile"].toString(),
+      blood: singleUser["blood"].toString(),
+      insta: singleUser["insta"].toString(),
+      website: singleUser["website"].toString(),
+      facebook: singleUser["facebook"].toString(),
+      email: singleUser["email"].toString(),
+      watsap: singleUser["watsap"].toString(),
+    );
+
+    //Adding user to the list.
+    users.add(user);
+  }
+  return users;
 }
 
-class _Display_Familystore_dataState extends State<Display_Familystore_data> {
-//Applying get request.
 
-  Future<List<User>> getRequest() async {
-    //replace your restFull API here.
-    String url =
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Textile/textiledisplayoriginal.php";
-    // old  table textile
-    // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
+class New_Sub_Cat extends StatefulWidget {
+  const New_Sub_Cat({Key? key}) : super(key: key);
 
-    final response = await http.get(Uri.parse(url));
+  @override
+  _New_Sub_CatState createState() => _New_Sub_CatState();
+}
 
-    var responseData = json.decode(response.body);
-
-    //Creating a list to store input data;
-    List<User> users = [];
-    for (var singleUser in responseData) {
-      User user = User(
-        //id:  singleUser["id"].toString(),
-          name: singleUser["name"].toString(),
-          address: singleUser["address"].toString(),
-          phone: singleUser["phone"].toString(),
-          mobile: singleUser["mobile"].toString(),
-          blood: singleUser["blood"].toString(),
-          insta: singleUser["insta"].toString(),
-          website: singleUser["website"].toString(),
-          facebook: singleUser["facebook"].toString(),
-          email: singleUser["email"].toString(),
-          watsap: singleUser["watsap"].toString(),
-      other_pro: singleUser["other_pro"].toString());
-
-      //Adding user to the list.
-      users.add(user);
-    }
-    return users;
-  }
-
+class _New_Sub_CatState extends State<New_Sub_Cat> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -86,11 +86,13 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Textile Shops",
+            "View More Sub Category",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded),
+            icon: Icon(Icons.arrow_back_rounded,            size: 33,// add custom icons also
+              // add custom icons also
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -118,6 +120,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                           "Data Loading Please Wait!",
                           style: TextStyle(),
                         ),
+                        Text("Check your Network connection!"),
                       ],
                     ),
                   ),
@@ -137,7 +140,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             height:
-                            MediaQuery.of(context).size.height / 2.1,
+                            MediaQuery.of(context).size.height / 2.5,
                             width: MediaQuery.of(context).size.width / 1,
                             child: SingleChildScrollView(
                               child: Column(
@@ -147,17 +150,25 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children:[
-                                        Container(
-                                          width: 30,
-                                          height: 30,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            image: DecorationImage(
-                                                image: AssetImage('assets/familystore.png'),
-                                                fit: BoxFit.fill
-                                            ),
-                                          ),
+                                        // Container(
+                                        //   width: 30,
+                                        //   height: 30,
+                                        //   decoration: BoxDecoration(
+                                        //     shape: BoxShape.rectangle,
+                                        //     image: DecorationImage(
+                                        //         image: AssetImage('assets/beauty-treatment.png'),
+                                        //         fit: BoxFit.fill
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        Text(
+                                          snapshot.data[index].catname,
+                                          style: GoogleFonts.lora(
+                                              fontSize: 25,
+                                              color: Colors.blueGrey.shade900),
                                         ),
+
+
                                         SizedBox(width: 15,),
                                         Text(
                                           snapshot.data[index].name,
@@ -294,23 +305,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    height: 70,
-                                    width: 300,
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white,),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          Text("Other Products:",style:TextStyle(fontSize: 17),),
-                                          Text(snapshot.data[index].other_pro,style: TextStyle(color: Colors.teal.shade400,
-                                          fontSize: 13),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    height: 5,
                                   ),
 
                                 ],
@@ -328,4 +323,3 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
     );
   }
 }
-//

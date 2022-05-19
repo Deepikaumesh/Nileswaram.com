@@ -18,6 +18,7 @@ class User {
   final String insta;
   final String facebook;
   final String blood;
+  final String other_pro;
 
   User({
     // required this.id,
@@ -31,6 +32,7 @@ class User {
     required this.insta,
     required this.facebook,
     required this.blood,
+    required this.other_pro,
   });
 }
 
@@ -45,7 +47,7 @@ class _Display_Officeurniture_dataState extends State<Display_Officeurniture_dat
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/sub_catagory_Display/officefurnitures.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Furniture/furnitures_Original.php";
     // old  table textile
     // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 
@@ -67,7 +69,8 @@ class _Display_Officeurniture_dataState extends State<Display_Officeurniture_dat
           website: singleUser["website"].toString(),
           facebook: singleUser["facebook"].toString(),
           email: singleUser["email"].toString(),
-          watsap: singleUser["watsap"].toString());
+          watsap: singleUser["watsap"].toString(),
+      other_pro: singleUser["other_pro"].toString());
 
       //Adding user to the list.
       users.add(user);
@@ -83,7 +86,7 @@ class _Display_Officeurniture_dataState extends State<Display_Officeurniture_dat
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Office Furniture",
+            "Furniture Shops",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -134,7 +137,7 @@ class _Display_Officeurniture_dataState extends State<Display_Officeurniture_dat
                               borderRadius: BorderRadius.circular(10),
                             ),
                             height:
-                            MediaQuery.of(context).size.height / 2.5,
+                            MediaQuery.of(context).size.height / 2.1,
                             width: MediaQuery.of(context).size.width / 1,
                             child: SingleChildScrollView(
                               child: Column(
@@ -291,7 +294,23 @@ class _Display_Officeurniture_dataState extends State<Display_Officeurniture_dat
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 5,
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    height: 70,
+                                    width: 300,
+                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white,),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Text("Other Products:",style:TextStyle(fontSize: 17),),
+                                          Text(snapshot.data[index].other_pro,style: TextStyle(color: Colors.teal.shade400,
+                                              fontSize: 13),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),

@@ -112,9 +112,9 @@ class _About_UsState extends State<About_Us> {
                     Padding(
                       padding: const EdgeInsets.all(25.0),
                       child: Text(
-                        'Nileshwaram.com is a Shop Directory app,where users '
-                        'can search and get details of all the local shops in Nileshwaram.In addition,customers can find news and '
-                        'other events in Nileshwaram City through this App.',
+                        'Nileswaram.com is a Shop Directory app,where users '
+                        'can search and get details of all the local shops in Nileswaram.In addition,customers can find news and '
+                        'other events in Nileswaram City through this App.',
                         textAlign: TextAlign.justify,
                         style: TextStyle(fontSize: 15),
                       ),

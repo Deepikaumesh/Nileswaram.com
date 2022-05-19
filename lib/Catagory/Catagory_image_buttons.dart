@@ -6,7 +6,9 @@ import 'package:untitled1/view_more.dart';
 import '../Display Catagory/Grocery_display.dart';
 import '../Display Catagory/HotelDisplay.dart';
 import '../Display Catagory/Textlie_display.dart';
+import '../Display_Sub_catagory/FamilystoreDisplay.dart';
 import '../Display_Sub_catagory/Hotel_Sub_Catagory_Display.dart';
+import '../Display_Sub_catagory/NonVegHotelDisplay.dart';
 import '../Display_Sub_catagory/Textile_Sub_Catagory_Display.dart';
 
 class CatagoryimageButton extends StatefulWidget {
@@ -39,7 +41,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
 
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Textile_Sub_Display()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Familystore_data()));
                     },
                     child: new Image.asset(
                       'assets/cloth.png',
@@ -48,7 +50,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     ),
                   ),
                   TextButton(onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Textile_Sub_Display()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Familystore_data()));
   }, child: Text("Textile",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
 
   ],
@@ -58,7 +60,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Hotel_Sub_Display()));
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Display_NonVeghotel_data()));
 
                     },
                     child: new Image.asset(
@@ -68,8 +70,8 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     ),
                   ),
                   TextButton(onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Hotel_Sub_Display()));
-                  }, child: Text("Hotel",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Display_NonVeghotel_data()));
+                  }, child: Text("Restaurant",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
                   // new Text(
                   //   "shop",
                   //   style:

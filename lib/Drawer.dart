@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled1/About_Us.dart';
 import 'package:untitled1/Version.dart';
+import 'Dummy/Dummy/DetailscreenS_firstpage.dart';
+import 'Dummy/Dummy/test2_frstpage.dart';
 import 'Dummy/Registrations/Event_Registration.dart';
 import 'Dummy/Registrations/News_Registration.dart';
 import 'Registrations/Ad_Registration.dart';
@@ -34,7 +36,7 @@ class MainDrawer extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: Text(
-                    "Nileshwaram.com",
+                    "Nileswaram.com",
                     style: GoogleFonts.aclonica(
                       color: Colors.red.shade900,
                       fontSize: 20.0,
@@ -136,18 +138,32 @@ class MainDrawer extends StatelessWidget {
         //   title: Text("Advertaisement Registration",
         //       style: GoogleFonts.prompt(fontSize: 15)),
         // ),
-        ListTile(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AdRegistration()));
-          },
-          leading: Icon(
-            Icons.web_asset_sharp,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("Advertaisement Registration",
-              style: GoogleFonts.prompt(fontSize: 15)),
-        ),
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(context,
+        //         MaterialPageRoute(builder: (context) => Listview()));
+        //   },
+        //   leading: Icon(
+        //     Icons.web_asset_sharp,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("Index Passing",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
+
+        //
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(context,
+        //         MaterialPageRoute(builder: (context) => Listview2()));
+        //   },
+        //   leading: Icon(
+        //     Icons.web_asset_sharp,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("Index Passing Test2",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
             ]),
     );
   }

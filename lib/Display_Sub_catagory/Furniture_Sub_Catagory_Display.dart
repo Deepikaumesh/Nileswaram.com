@@ -29,13 +29,13 @@ class _Furniture_Sub_DisplayState extends State<Furniture_Sub_Display> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-        appBar: AppBar(title: Text("Select Sub Catagory",style: GoogleFonts.prompt(color: Colors.red.shade900),),backgroundColor: Colors.white,
+      appBar: AppBar(title: Text("Select Sub Catagory",style: GoogleFonts.prompt(color: Colors.red.shade900),),backgroundColor: Colors.white,
         elevation: 0,centerTitle: true,leading: GestureDetector(
-            onTap: () { Navigator.pop(context);},
-            child: Icon(
-              Icons.arrow_back_rounded,color: Colors.red.shade900,  // add custom icons also
-            ),
-          ),),
+          onTap: () { Navigator.pop(context);},
+          child: Icon(
+            Icons.arrow_back_rounded,color: Colors.red.shade900,  // add custom icons also
+          ),
+        ),),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

@@ -86,11 +86,11 @@ class _New_CatoState extends State<New_Cato> {
       centerTitle: true,
       backgroundColor: Colors.pink.shade800,
       title: Text(
-        "View More Catagory",
+        "View More Category",
         style: GoogleFonts.prompt(fontSize: 22),
       ),
       leading: IconButton(
-        icon: Icon(Icons.arrow_back_rounded),
+        icon: Icon(Icons.arrow_back_rounded,size: 35,),
         onPressed: () {
           Navigator.pop(context);
         },
