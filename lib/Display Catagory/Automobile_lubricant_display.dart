@@ -1,16 +1,15 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:maps_launcher/maps_launcher.dart';
 
 
-
+//Creating a class user to store the data;
 class User {
   // final String id;
   final String name;
@@ -38,25 +37,22 @@ class User {
     required this.facebook,
     required this.blood,
     required this.other_pro,
+
   });
 }
 
-
-
-class Hardware_Display extends StatefulWidget {
+class Automobile_Lubricant_Display extends StatefulWidget {
   @override
-  _Hardware_DisplayState createState() => _Hardware_DisplayState();
+  _Automobile_Lubricant_DisplayState createState() => _Automobile_Lubricant_DisplayState();
 }
 
-class _Hardware_DisplayState extends State<Hardware_Display> {
-
-
+class _Automobile_Lubricant_DisplayState extends State<Automobile_Lubricant_Display> {
 //Applying get request.
 
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Hardware/hardware.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/A/automobile_lubricant.php";
     // old  table textile
     // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 
@@ -95,7 +91,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Hardware Shops",
+            "Automobile Lubricant",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -351,7 +347,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                                 width: 30,
                                               ),
                                             ),
-                                           // Text(snapshot.data[index].insta),
+                                            // Text(snapshot.data[index].insta),
                                           ]),
                                         ],
                                       ),

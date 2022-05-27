@@ -71,20 +71,20 @@ class MainDrawer extends StatelessWidget {
                 fontSize: 15,
               )),
         ),
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Version()));
-          },
-          leading: Icon(
-            Icons.mobile_friendly_outlined,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text(
-            "Version",
-            style: GoogleFonts.prompt(fontSize: 15),
-          ),
-        ),
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(
+        //         context, MaterialPageRoute(builder: (context) => Version()));
+        //   },
+        //   leading: Icon(
+        //     Icons.mobile_friendly_outlined,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text(
+        //     "Version",
+        //     style: GoogleFonts.prompt(fontSize: 15),
+        //   ),
+        // ),
 
         // ListTile(
         //   onTap: () {

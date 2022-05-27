@@ -1,9 +1,64 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:open_mail_app/open_mail_app.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+
+
+final _url = 'https://www.astrasoftwaresolutions.com';
+//final Uri _url = Uri.parse('https://www.astrasoftwaresolutions.com');
+final phoneNumber = '+91 9633086226';
+
+final landphone = '+91 8848626187';
+final url = 'sms:$phoneNumber';
+final urrl = 'sms:$landphone';
+final facebook =
+    "https://www.facebook.com/arun.prabhun";
+final instagram =
+    "https://www.instagram.com/arunprabhun/?hl=en";
+
+
+void _launchPhone() async {
+  if (!await launch(
+    url,
+  )) throw 'Could not launch $_url';
+}
+
+void _launchlandPhone() async {
+  if (!await launch(
+    urrl,
+  )) throw 'Could not launch $_url';
+}
+
+
+void _launchfacebook() async {
+  if (!await launch(
+    facebook,
+    forceWebView: false,
+    enableJavaScript: true,
+  )) throw 'Could not launch $_url';
+}
+
+void _launchinstagram() async {
+  if (!await launch(
+    instagram,
+    forceWebView: false,
+    enableJavaScript: true,
+  )) throw 'Could not launch $_url';
+}
+
+void _launchUrl() async {
+  if (!await launch(
+    _url, forceWebView: false,
+    //forceSafariVC: false,
+    enableJavaScript: true,
+  )) throw 'Could not launch $_url';
+}
 
 //Creating a class user to store the data;
 class User {
@@ -18,6 +73,7 @@ class User {
   final String insta;
   final String facebook;
   final String blood;
+  final String other_pro;
 
   User({
     // required this.id,
@@ -31,8 +87,11 @@ class User {
     required this.insta,
     required this.facebook,
     required this.blood,
+    required this.other_pro,
   });
 }
+
+
 
 class Grocery_Display extends StatefulWidget {
   @override
@@ -40,14 +99,15 @@ class Grocery_Display extends StatefulWidget {
 }
 
 class _Grocery_DisplayState extends State<Grocery_Display> {
+
+
 //Applying get request.
 
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
         "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Grocery/grocery.php";
-    // old  table textile
-    // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
+
 
     final response = await http.get(Uri.parse(url));
 
@@ -67,7 +127,8 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
           website: singleUser["website"].toString(),
           facebook: singleUser["facebook"].toString(),
           email: singleUser["email"].toString(),
-          watsap: singleUser["watsap"].toString());
+          watsap: singleUser["watsap"].toString(),
+          other_pro: singleUser["other_pro"].toString());
 
       //Adding user to the list.
       users.add(user);
@@ -83,7 +144,7 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Grocery",
+            "Grocery Shops",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -122,184 +183,283 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
               } else {
                 return ListView.builder(
                     itemCount: snapshot.data.length,
-                    itemBuilder: (ctx, index) => SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 8),
-                            decoration: BoxDecoration(
-                              color: Colors.blueGrey.shade100,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            height:
-                            MediaQuery.of(context).size.height / 2.5,
-                            width: MediaQuery.of(context).size.width / 1,
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children:[
-                                        Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                                image: AssetImage('assets/grow.png'),
-                                                fit: BoxFit.fill
+                    itemBuilder: (ctx, index) =>
+                        SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: Colors.blueGrey.shade100,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                height:
+                                MediaQuery
+                                    .of(context)
+                                    .size
+                                    .height / 1.8,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width / 1,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment
+                                              .start,
+                                          children: [
+                                            // Container(
+                                            //   width: 30,
+                                            //   height: 30,
+                                            //   decoration: BoxDecoration(
+                                            //     shape: BoxShape.rectangle,
+                                            //     image: DecorationImage(
+                                            //         image: AssetImage(
+                                            //             'assets/familystore.png'),
+                                            //         fit: BoxFit.fill
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                            // SizedBox(width: 15,),
+                                            Text(
+                                              snapshot.data[index].name,
+                                              style: GoogleFonts.lora(
+                                                  fontSize: 25,
+                                                  color: Colors.pink.shade700),
+                                            ),
+                                          ],),
+                                      ),
+                                      Text(
+                                        snapshot.data[index].address,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 6,
+                                        style: GoogleFonts.prompt(
+                                            color: Colors.deepOrange.shade400,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(height: 15,),
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () async => !await launch('sms:' + snapshot.data[index].phone),
+                                            child: Image.asset(
+                                              "assets/tele.png",
+                                              height: 30,
+                                              width: 20,
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(width: 15,),
-                                        Text(
-                                          snapshot.data[index].name,
-                                          style: GoogleFonts.lora(
-                                              fontSize: 25,
-                                              color: Colors.pink.shade700),
-                                        ),
-                                      ],),
-                                  ),
-                                  Text(
-                                    snapshot.data[index].address,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 6,
-                                    style: GoogleFonts.prompt(
-                                        color: Colors.deepOrange.shade400, fontSize: 13),
-                                  ),
-                                  SizedBox(height: 15,),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/tele.png",
-                                        height: 30,
-                                        width: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(snapshot.data[index].phone),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/mobile.png",
-                                        height: 30,
-                                        width: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(snapshot.data[index].mobile),
-                                    ],
-                                  ),
-                                  // Row(
-                                  //   children: [
-                                  //     Text("Blood Group:"),
-                                  //     Text(snapshot.data[index].blood),
-                                  //   ],
-                                  // ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/internet.png",
-                                        height: 20,
-                                        width: 18,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        snapshot.data[index].website,
-                                        style: GoogleFonts.prompt(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/email.png",
-                                        height: 20,
-                                        width: 18,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        snapshot.data[index].email,
-                                        style: GoogleFonts.prompt(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/blood.png",
-                                        height: 30,
-                                        width: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text("Blood Group:",style: GoogleFonts.prompt(),),
-                                      SizedBox(width: 5,),
-                                      Text(snapshot.data[index].blood,style: GoogleFonts.prompt(color: Colors.red.shade900),),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Image.asset(
-                                            "assets/watsap.png",
-                                            height: 50,
-                                            width: 30,
+                                          SizedBox(
+                                            width: 20,
                                           ),
-                                          Text(snapshot.data[index].watsap),
+                                          GestureDetector(
+                                              onTap: () async => !await launch('sms:' + snapshot.data[index].phone),
+                                              child: Text(
+                                                  snapshot.data[index].phone)),
                                         ],
                                       ),
-                                      Column(children: [
-                                        Image.asset(
-                                          "assets/facebook.png",
-                                          height: 50,
-                                          width: 30,
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: _launchPhone,
+                                            child: Image.asset(
+                                              "assets/mobile.png",
+                                              height: 30,
+                                              width: 20,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          GestureDetector(
+                                              onTap: () async => !await launch('sms:' + snapshot.data[index].mobile),
+                                              child: Text(
+                                                  snapshot.data[index].mobile)),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            "assets/internet.png",
+                                            height: 20,
+                                            width: 18,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                            snapshot.data[index].website,
+                                            style: GoogleFonts.prompt(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            "assets/email.png",
+                                            height: 20,
+                                            width: 18,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          GestureDetector(
+                                            onTap: ()async {
+                                              var result = await OpenMailApp.openMailApp();
+                                              if (!result.didOpen && !result.canOpen) {
+                                                showNoMailAppsDialog(context);
+                                              } else if (!result.didOpen && result.canOpen) {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (_) {
+                                                    return MailAppPickerDialog(
+                                                      mailApps: result.options,
+                                                    );
+                                                  },
+                                                );
+                                              }
+                                            },
+
+
+                                            child: Text(
+                                              snapshot.data[index].email,
+                                              style: GoogleFonts.prompt(
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            "assets/blood.png",
+                                            height: 30,
+                                            width: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text("Blood Group:",
+                                            style: GoogleFonts.prompt(),),
+                                          SizedBox(width: 5,),
+                                          Text(snapshot.data[index].blood,
+                                            style: GoogleFonts.prompt(
+                                                color: Colors.red.shade900),),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () async => await launch(
+                                                    "https://wa.me/${snapshot.data[index].watsap}?text=Hello"),
+                                                child: Image.asset(
+                                                  "assets/watsap.png",
+                                                  height: 50,
+                                                  width: 30,
+                                                ),
+                                              ),
+                                              // GestureDetector(
+                                              //     onTap: () async => await launch(
+                                              //         "https://wa.me/${snapshot.data[index].watsap}?text=Hello"),
+                                              //  child: Text(snapshot.data[index].watsap)
+                                              // ),
+                                            ],
+                                          ),
+                                          Column(children: [
+                                            GestureDetector(
+                                              onTap: () async => !await launch(snapshot.data[index].facebook),
+                                              //_launchfacebook,
+                                              child: Image.asset(
+                                                "assets/facebook.png",
+                                                height: 50,
+                                                width: 30,
+                                              ),
+                                            ),
+                                            // GestureDetector(
+                                            //      onTap: () async => !await launch(snapshot.data[index].facebook),
+                                            //     //_launchfacebook,
+                                            //     child: Text(snapshot.data[index].facebook)),
+                                          ]),
+                                          Column(children: [
+                                            GestureDetector(
+                                              onTap: () async => !await launch(snapshot.data[index].insta),
+                                              child: Image.asset(
+                                                "assets/instagram.png",
+                                                height: 50,
+                                                width: 30,
+                                              ),
+                                            ),
+                                            // Text(snapshot.data[index].insta),
+                                          ]),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 70,
+                                        width: 300,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                              10), color: Colors.white,),
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            children: [
+                                              Text("Other Products:",
+                                                style: TextStyle(
+                                                    fontSize: 17),),
+                                              Text(
+                                                snapshot.data[index].other_pro,
+                                                style: TextStyle(
+                                                    color: Colors.teal.shade400,
+                                                    fontSize: 13),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Text(snapshot.data[index].facebook),
-                                      ]),
-                                      Column(children: [
-                                        Image.asset(
-                                          "assets/instagram.png",
-                                          height: 50,
-                                          width: 30,
-                                        ),
-                                        Text(snapshot.data[index].insta),
-                                      ]),
+                                      ),
+                                      SizedBox(height: 10,),
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              primary: Colors.red.shade900,
+                                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+                                              textStyle: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                          onPressed: () => MapsLauncher.launchQuery(
+                                              snapshot.data[index].name + snapshot.data[index].address),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text('Location'),
+                                              Icon(Icons.location_on_rounded),
+                                            ],
+                                          )
+
+
+                                      ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ));
+                        ));
               }
             },
           ),
@@ -307,5 +467,26 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
       ),
     );
   }
+
+
+  void showNoMailAppsDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Open Mail App"),
+          content: Text("No mail apps installed"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
 }
-//
+

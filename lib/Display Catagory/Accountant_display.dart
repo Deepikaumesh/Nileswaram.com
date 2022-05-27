@@ -10,7 +10,57 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
 
+final _url = 'https://www.astrasoftwaresolutions.com';
+//final Uri _url = Uri.parse('https://www.astrasoftwaresolutions.com');
+final phoneNumber = '+91 9633086226';
 
+final landphone = '+91 8848626187';
+final url = 'sms:$phoneNumber';
+final urrl = 'sms:$landphone';
+final facebook =
+    "https://www.facebook.com/arun.prabhun";
+final instagram =
+    "https://www.instagram.com/arunprabhun/?hl=en";
+
+
+void _launchPhone() async {
+  if (!await launch(
+    url,
+  )) throw 'Could not launch $_url';
+}
+
+void _launchlandPhone() async {
+  if (!await launch(
+    urrl,
+  )) throw 'Could not launch $_url';
+}
+
+
+void _launchfacebook() async {
+  if (!await launch(
+    facebook,
+    forceWebView: false,
+    enableJavaScript: true,
+  )) throw 'Could not launch $_url';
+}
+
+void _launchinstagram() async {
+  if (!await launch(
+    instagram,
+    forceWebView: false,
+    enableJavaScript: true,
+  )) throw 'Could not launch $_url';
+}
+
+void _launchUrl() async {
+  if (!await launch(
+    _url, forceWebView: false,
+    //forceSafariVC: false,
+    enableJavaScript: true,
+  )) throw 'Could not launch $_url';
+}
+
+//Creating a class user to store the data;
 class User {
   // final String id;
   final String name;
@@ -43,12 +93,12 @@ class User {
 
 
 
-class Hardware_Display extends StatefulWidget {
+class Accountant_Display extends StatefulWidget {
   @override
-  _Hardware_DisplayState createState() => _Hardware_DisplayState();
+  _Accountant_DisplayState createState() => _Accountant_DisplayState();
 }
 
-class _Hardware_DisplayState extends State<Hardware_Display> {
+class _Accountant_DisplayState extends State<Accountant_Display> {
 
 
 //Applying get request.
@@ -56,9 +106,8 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Hardware/hardware.php";
-    // old  table textile
-    // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/A/accountant.php";
+
 
     final response = await http.get(Uri.parse(url));
 
@@ -95,7 +144,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Hardware Shops",
+            "Accountant Display",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -351,7 +400,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                                 width: 30,
                                               ),
                                             ),
-                                           // Text(snapshot.data[index].insta),
+                                            // Text(snapshot.data[index].insta),
                                           ]),
                                         ],
                                       ),

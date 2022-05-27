@@ -4,12 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled1/view_more.dart';
 
 import '../Display Catagory/Grocery_display.dart';
-import '../Display Catagory/HotelDisplay.dart';
-import '../Display Catagory/Textlie_display.dart';
 import '../Display_Sub_catagory/FamilystoreDisplay.dart';
-import '../Display_Sub_catagory/Hotel_Sub_Catagory_Display.dart';
 import '../Display_Sub_catagory/NonVegHotelDisplay.dart';
-import '../Display_Sub_catagory/Textile_Sub_Catagory_Display.dart';
 
 class CatagoryimageButton extends StatefulWidget {
   @override

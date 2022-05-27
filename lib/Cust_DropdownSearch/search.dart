@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:open_mail_app/open_mail_app.dart';
 import 'package:untitled1/Cust_DropdownSearch/user_details.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class Cust_Searchbar_Home extends StatefulWidget {
@@ -95,6 +98,9 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                       border: InputBorder.none,
                     ),
                     onChanged: onSearchTextChanged,
+                      textCapitalization: TextCapitalization.sentences,
+
+
                   ),
                 ),
               ),
@@ -107,7 +113,8 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                       itemBuilder: (context, i) {
                         return SingleChildScrollView(
                           child: Container(
-                            height: 280,
+                            //height: 300,
+                            height: MediaQuery.of(context).size.height/2.10,
                             child: Card(
                               child: ListTile(
                                 title: Text(_searchResult[i].name,
@@ -119,7 +126,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                         child: Column(
                                           children: [
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
@@ -134,70 +141,100 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 10,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("mail id:-"),
-                                                Text(_userDetails[i].email)
+                                                GestureDetector(
+                                                    onTap: ()async {
+                                                      var result = await OpenMailApp.openMailApp();
+                                                      if (!result.didOpen && !result.canOpen) {
+                                                        showNoMailAppsDialog(context);
+                                                      } else if (!result.didOpen && result.canOpen) {
+                                                        showDialog(
+                                                          context: context,
+                                                          builder: (_) {
+                                                            return MailAppPickerDialog(
+                                                              mailApps: result.options,
+                                                            );
+                                                          },
+                                                        );
+                                                      }
+                                                    },
+                                                    child: Text(_userDetails[i].email))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("website:-"),
-                                                Text(_userDetails[i].website)
+                                                GestureDetector(
+                                                    onTap: () async => !await launch(_userDetails[i].website),
+                                                    child: Text(_userDetails[i].website))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("facebook:-"),
-                                                Text(_userDetails[i].facebook)
+                                                GestureDetector(
+                                                    onTap: () async => !await launch(_userDetails[i].facebook),
+                                                    child: Text(_userDetails[i].facebook,style: TextStyle(fontSize: 12),))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("Instagram  id:-"),
-                                                Text(_userDetails[i].insta)
+                                                GestureDetector(
+                                                    onTap: () async => !await launch(_userDetails[i].insta),
+                                                    child: Text(_userDetails[i].insta,style: TextStyle(fontSize: 12),))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("Phone no:-"),
-                                                Text(_userDetails[i].phone)
+                                                GestureDetector(
+                                                    onTap: () async => !await launch('sms:' + _userDetails[i].phone),
+                                                    child: Text(_userDetails[i].phone))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("Watsap no:-"),
-                                                Text(_userDetails[i].watsap)
+                                                GestureDetector(
+                                                    onTap: () async => await launch(
+                                                        "https://wa.me/${_userDetails[i].watsap}?text=Hello"),
+
+                                                    child: Text(_userDetails[i].watsap))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
                                                 Text("Mobile no:-"),
-                                                Text(_userDetails[i].mobile)
+                                                GestureDetector(
+                                                    onTap: () async => !await launch('sms:' + _userDetails[i].mobile),
+                                                    child: Text(_userDetails[i].mobile))
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 15,
                                             ),
                                             Row(
                                               children: [
@@ -205,6 +242,21 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                 Text(_userDetails[i].blood)
                                               ],
                                             ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text("View Location:-"),
+                                                GestureDetector(
+                                                    onTap: (){
+                                                      MapsLauncher.launchQuery(
+                                                         _userDetails[i].name +  _userDetails[i].address);
+                                                    },
+                                                    child: Icon(Icons.location_on)),
+                                              ],
+                                            ),
+
                                           ],
                                         ),
                                       )
@@ -277,7 +329,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                       itemBuilder: (context, index) {
                         return SingleChildScrollView(
                           child: Container(
-                            height: 280,
+                            height: MediaQuery.of(context).size.height/2.10,
                             child: Card(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
@@ -293,7 +345,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                   child: Column(
                                     children: [
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
@@ -308,75 +360,117 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 10,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("mail id:-"),
-                                          Text(_userDetails[index].email)
+                                          GestureDetector(
+                                              onTap: ()async {
+                                                var result = await OpenMailApp.openMailApp();
+                                                if (!result.didOpen && !result.canOpen) {
+                                                  showNoMailAppsDialog(context);
+                                                } else if (!result.didOpen && result.canOpen) {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (_) {
+                                                      return MailAppPickerDialog(
+                                                        mailApps: result.options,
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                              child: Text(_userDetails[index].email))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("website:-"),
-                                          Text(_userDetails[index].website)
+                                          GestureDetector(
+                                              onTap: () async => !await launch(_userDetails[index].website),
+                                              child: Text(_userDetails[index].website))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("facebook:-"),
-                                          Text(_userDetails[index].facebook)
+                                          GestureDetector(
+                                              onTap: () async => !await launch(_userDetails[index].facebook),
+                                              child: Text(_userDetails[index].facebook,style: TextStyle(fontSize: 12),))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("Instagram  id:-"),
-                                          Text(_userDetails[index].insta)
+                                          GestureDetector(
+                                              onTap: () async => !await launch(_userDetails[index].insta),
+                                              child: Text(_userDetails[index].insta,style: TextStyle(fontSize: 12),))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("Phone no:-"),
-                                          Text(_userDetails[index].phone)
+                                          GestureDetector(
+                                              onTap: () async => !await launch('sms:' + _userDetails[index].phone),
+                                              child: Text(_userDetails[index].phone))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("Watsap no:-"),
-                                          Text(_userDetails[index].watsap)
+                                          GestureDetector(
+                                              onTap: () async => await launch(
+                                                  "https://wa.me/${_userDetails[index].watsap}?text=Hello"),
+
+                                              child: Text(_userDetails[index].watsap))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("Mobile no:-"),
-                                          Text(_userDetails[index].mobile)
+                                          GestureDetector(
+                                              onTap: () async => !await launch('sms:' + _userDetails[index].mobile),
+                                              child: Text(_userDetails[index].mobile))
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Row(
                                         children: [
                                           Text("Blood group:-"),
                                           Text(_userDetails[index].blood)
+                                        ],
+                                      ),
+                                      SizedBox(height: 15,),
+                                      Row(
+                                        children: [
+                                          Text("View Location:-"),
+                                          GestureDetector(
+                                              onTap: (){
+                                                MapsLauncher.launchQuery(
+                                                    _userDetails[index].name +  _userDetails[index].address);
+                                              },
+                                              child: Icon(Icons.location_on)),
                                         ],
                                       ),
                                     ],
@@ -418,6 +512,25 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                       }))
         ],
       ),
+    );
+  }
+  void showNoMailAppsDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Open Mail App"),
+          content: Text("No mail apps installed"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
     );
   }
 }
