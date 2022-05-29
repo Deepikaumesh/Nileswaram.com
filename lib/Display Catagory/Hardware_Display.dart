@@ -24,6 +24,7 @@ class User {
   final String facebook;
   final String blood;
   final String other_pro;
+  final String image;
 
   User({
     // required this.id,
@@ -38,6 +39,7 @@ class User {
     required this.facebook,
     required this.blood,
     required this.other_pro,
+    required this.image,
   });
 }
 
@@ -79,7 +81,8 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
           facebook: singleUser["facebook"].toString(),
           email: singleUser["email"].toString(),
           watsap: singleUser["watsap"].toString(),
-          other_pro: singleUser["other_pro"].toString());
+          other_pro: singleUser["other_pro"].toString(),
+        image: singleUser["image"].toString(),);
 
       //Adding user to the list.
       users.add(user);
@@ -143,6 +146,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 8),
                                 decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.blueAccent),
                                   color: Colors.blueGrey.shade100,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -150,7 +154,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                 MediaQuery
                                     .of(context)
                                     .size
-                                    .height / 1.8,
+                                    .height / 1.5,
                                 width: MediaQuery
                                     .of(context)
                                     .size
@@ -160,31 +164,34 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                     children: [
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .start,
-                                          children: [
-                                            // Container(
-                                            //   width: 30,
-                                            //   height: 30,
-                                            //   decoration: BoxDecoration(
-                                            //     shape: BoxShape.rectangle,
-                                            //     image: DecorationImage(
-                                            //         image: AssetImage(
-                                            //             'assets/tools.png'),
-                                            //         fit: BoxFit.fill
-                                            //     ),
-                                            //   ),
-                                            // ),
-                                            SizedBox(width: 15,),
-                                            Text(
-                                              snapshot.data[index].name,
-                                              style: GoogleFonts.lora(
-                                                  fontSize: 25,
-                                                  color: Colors.pink.shade700),
-                                            ),
-                                          ],),
+                                        child: Text(
+                                          snapshot.data[index].name,
+                                          style: GoogleFonts.lora(
+                                              fontSize: 25,
+                                              color: Colors.pink.shade700),
+                                        ),
                                       ),
+                                      SizedBox(height: 10,),
+                                      Container(
+                                        height: 100,
+                                        //  width: 300,
+                                        width: MediaQuery.of(context).size.width/1.4,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.red.shade900),
+                                          borderRadius: BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            image: NetworkImage(snapshot.data[index].image),
+                                            fit: BoxFit.fill,
+                                          ),
+
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   snapshot.data[index].name,
+                                      //   style: GoogleFonts.lora(
+                                      //       fontSize: 25,
+                                      //       color: Colors.pink.shade700),
+                                      // ),
                                       Text(
                                         snapshot.data[index].address,
                                         overflow: TextOverflow.ellipsis,
@@ -216,7 +223,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                       Row(
                                         children: [
                                           GestureDetector(
-                                            onTap: () async => !await launch('sms:' + snapshot.data[index].mobile),
+                                           // onTap: _launchPhone,
                                             child: Image.asset(
                                               "assets/mobile.png",
                                               height: 30,
@@ -242,13 +249,10 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                           SizedBox(
                                             width: 20,
                                           ),
-                                          GestureDetector(
-                                            onTap: () async => !await launch(snapshot.data[index].website),
-                                            child: Text(
-                                              snapshot.data[index].website,
-                                              style: GoogleFonts.prompt(
-                                                fontSize: 15,
-                                              ),
+                                          Text(
+                                            snapshot.data[index].website,
+                                            style: GoogleFonts.prompt(
+                                              fontSize: 15,
                                             ),
                                           ),
                                         ],
@@ -326,11 +330,17 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                                   width: 30,
                                                 ),
                                               ),
+                                              // GestureDetector(
+                                              //     onTap: () async => await launch(
+                                              //         "https://wa.me/${snapshot.data[index].watsap}?text=Hello"),
+                                              //  child: Text(snapshot.data[index].watsap)
+                                              // ),
                                             ],
                                           ),
                                           Column(children: [
                                             GestureDetector(
                                               onTap: () async => !await launch(snapshot.data[index].facebook),
+                                              //_launchfacebook,
                                               child: Image.asset(
                                                 "assets/facebook.png",
                                                 height: 50,
@@ -351,7 +361,7 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
                                                 width: 30,
                                               ),
                                             ),
-                                           // Text(snapshot.data[index].insta),
+                                            // Text(snapshot.data[index].insta),
                                           ]),
                                         ],
                                       ),
@@ -401,6 +411,20 @@ class _Hardware_DisplayState extends State<Hardware_Display> {
 
 
                                       ),
+
+                                      // Container(
+                                      //   height: 100,
+                                      // //  width: 300,
+                                      //   width: MediaQuery.of(context).size.width/1.5,
+                                      //   decoration: BoxDecoration(
+                                      //     borderRadius: BorderRadius.circular(15),
+                                      //     image: DecorationImage(
+                                      //       image: NetworkImage(snapshot.data[index].image),
+                                      //       fit: BoxFit.fill,
+                                      //     ),
+                                      //
+                                      // ),
+                                      // ),
                                     ],
                                   ),
                                 ),

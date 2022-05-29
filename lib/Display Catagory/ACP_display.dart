@@ -10,56 +10,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
 
-final _url = 'https://www.astrasoftwaresolutions.com';
-//final Uri _url = Uri.parse('https://www.astrasoftwaresolutions.com');
-final phoneNumber = '+91 9633086226';
-
-final landphone = '+91 8848626187';
-final url = 'sms:$phoneNumber';
-final urrl = 'sms:$landphone';
-final facebook =
-    "https://www.facebook.com/arun.prabhun";
-final instagram =
-    "https://www.instagram.com/arunprabhun/?hl=en";
-
-
-void _launchPhone() async {
-  if (!await launch(
-    url,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchlandPhone() async {
-  if (!await launch(
-    urrl,
-  )) throw 'Could not launch $_url';
-}
-
-
-void _launchfacebook() async {
-  if (!await launch(
-    facebook,
-    forceWebView: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchinstagram() async {
-  if (!await launch(
-    instagram,
-    forceWebView: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchUrl() async {
-  if (!await launch(
-    _url, forceWebView: false,
-    //forceSafariVC: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
 //Creating a class user to store the data;
 class User {
   // final String id;
@@ -192,6 +142,7 @@ class _ACP_DisplayState extends State<ACP_Display> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 8),
                                 decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.blueAccent),
                                   color: Colors.blueGrey.shade100,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -199,7 +150,7 @@ class _ACP_DisplayState extends State<ACP_Display> {
                                 MediaQuery
                                     .of(context)
                                     .size
-                                    .height / 1.8,
+                                    .height / 1.5,
                                 width: MediaQuery
                                     .of(context)
                                     .size
@@ -209,31 +160,34 @@ class _ACP_DisplayState extends State<ACP_Display> {
                                     children: [
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .start,
-                                          children: [
-                                            // Container(
-                                            //   width: 30,
-                                            //   height: 30,
-                                            //   decoration: BoxDecoration(
-                                            //     shape: BoxShape.rectangle,
-                                            //     image: DecorationImage(
-                                            //         image: AssetImage(
-                                            //             'assets/tools.png'),
-                                            //         fit: BoxFit.fill
-                                            //     ),
-                                            //   ),
-                                            // ),
-                                            SizedBox(width: 15,),
-                                            Text(
-                                              snapshot.data[index].name,
-                                              style: GoogleFonts.lora(
-                                                  fontSize: 25,
-                                                  color: Colors.pink.shade700),
-                                            ),
-                                          ],),
+                                        child: Text(
+                                          snapshot.data[index].name,
+                                          style: GoogleFonts.lora(
+                                              fontSize: 25,
+                                              color: Colors.pink.shade700),
+                                        ),
                                       ),
+                                      SizedBox(height: 10,),
+                                      Container(
+                                        height: 100,
+                                        //  width: 300,
+                                        width: MediaQuery.of(context).size.width/1.4,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.red.shade900),
+                                          borderRadius: BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            image: NetworkImage(snapshot.data[index].image),
+                                            fit: BoxFit.fill,
+                                          ),
+
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   snapshot.data[index].name,
+                                      //   style: GoogleFonts.lora(
+                                      //       fontSize: 25,
+                                      //       color: Colors.pink.shade700),
+                                      // ),
                                       Text(
                                         snapshot.data[index].address,
                                         overflow: TextOverflow.ellipsis,
@@ -265,7 +219,7 @@ class _ACP_DisplayState extends State<ACP_Display> {
                                       Row(
                                         children: [
                                           GestureDetector(
-                                            onTap: () async => !await launch('sms:' + snapshot.data[index].mobile),
+                                            // onTap: _launchPhone,
                                             child: Image.asset(
                                               "assets/mobile.png",
                                               height: 30,
@@ -291,13 +245,10 @@ class _ACP_DisplayState extends State<ACP_Display> {
                                           SizedBox(
                                             width: 20,
                                           ),
-                                          GestureDetector(
-                                            onTap: () async => !await launch(snapshot.data[index].website),
-                                            child: Text(
-                                              snapshot.data[index].website,
-                                              style: GoogleFonts.prompt(
-                                                fontSize: 15,
-                                              ),
+                                          Text(
+                                            snapshot.data[index].website,
+                                            style: GoogleFonts.prompt(
+                                              fontSize: 15,
                                             ),
                                           ),
                                         ],
@@ -375,11 +326,17 @@ class _ACP_DisplayState extends State<ACP_Display> {
                                                   width: 30,
                                                 ),
                                               ),
+                                              // GestureDetector(
+                                              //     onTap: () async => await launch(
+                                              //         "https://wa.me/${snapshot.data[index].watsap}?text=Hello"),
+                                              //  child: Text(snapshot.data[index].watsap)
+                                              // ),
                                             ],
                                           ),
                                           Column(children: [
                                             GestureDetector(
                                               onTap: () async => !await launch(snapshot.data[index].facebook),
+                                              //_launchfacebook,
                                               child: Image.asset(
                                                 "assets/facebook.png",
                                                 height: 50,
@@ -450,6 +407,20 @@ class _ACP_DisplayState extends State<ACP_Display> {
 
 
                                       ),
+
+                                      // Container(
+                                      //   height: 100,
+                                      // //  width: 300,
+                                      //   width: MediaQuery.of(context).size.width/1.5,
+                                      //   decoration: BoxDecoration(
+                                      //     borderRadius: BorderRadius.circular(15),
+                                      //     image: DecorationImage(
+                                      //       image: NetworkImage(snapshot.data[index].image),
+                                      //       fit: BoxFit.fill,
+                                      //     ),
+                                      //
+                                      // ),
+                                      // ),
                                     ],
                                   ),
                                 ),

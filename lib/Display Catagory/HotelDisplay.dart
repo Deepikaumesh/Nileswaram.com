@@ -44,7 +44,7 @@ class _Display_Hotel_DataState extends State<Display_Hotel_Data> {
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url ="https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/hotel/hoteldisplay.php";
-       // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/hotel/hoteldisplay.php";
+    // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/hotel/hoteldisplay.php";
     // old  table textile
     // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 

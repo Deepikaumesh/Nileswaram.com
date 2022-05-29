@@ -5,7 +5,6 @@ import 'package:untitled1/view_more.dart';
 
 import '../Display Catagory/Grocery_display.dart';
 import '../Display Catagory/HotelDisplay.dart';
-import '../Display Catagory/Textlie_display.dart';
 import '../Display_Sub_catagory/Hotel_Sub_Catagory_Display.dart';
 import '../Display_Sub_catagory/Textile_Sub_Catagory_Display.dart';
 import 'Display Catagory/news_Display.dart';

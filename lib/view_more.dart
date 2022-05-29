@@ -49,6 +49,7 @@ import 'Display Catagory/Bricks_Flyash_display.dart';
 import 'Display Catagory/Builder_Commercial_display.dart';
 import 'Display Catagory/Builder_Promoter_display.dart';
 import 'Display Catagory/Hardware_Display.dart';
+import 'Display Catagory/Hospital_Display.dart';
 import 'Display Catagory/agri_Display.dart';
 import 'Display Catagory/architect_interior_display.dart';
 import 'Display Catagory/architect_landscaping.dart';
@@ -613,6 +614,16 @@ class View_MoreState extends State<View_More> {
                     TextButton(onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Fruits_Veg_Display()));
                     }, child: Text("Fruits & Vegitables",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),)),
+                  ]  ),
+
+              Row(
+                  children:[
+                    Padding(
+                        padding: EdgeInsets.only(left: 25),
+                        child: Icon(Icons.camera)),
+                    TextButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>hospital_Display()));
+                    }, child: Text("Hospital",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),)),
                   ]  ),
 
 

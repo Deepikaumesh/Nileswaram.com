@@ -1,13 +1,68 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:maps_launcher/maps_launcher.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
+import '../Carousel/Imageview_test_Carousel.dart';
+
+
+
+
+// final _url = 'https://www.astrasoftwaresolutions.com';
+// //final Uri _url = Uri.parse('https://www.astrasoftwaresolutions.com');
+// final phoneNumber = '+91 9633086226';
+//
+// final landphone = '+91 8848626187';
+// final url = 'sms:$phoneNumber';
+// final urrl = 'sms:$landphone';
+// final facebook =
+//     "https://www.facebook.com/arun.prabhun";
+// final instagram =
+//     "https://www.instagram.com/arunprabhun/?hl=en";
+//
+//
+// void _launchPhone() async {
+//   if (!await launch(
+//     url,
+//   )) throw 'Could not launch $_url';
+// }
+//
+// void _launchlandPhone() async {
+//   if (!await launch(
+//     urrl,
+//   )) throw 'Could not launch $_url';
+// }
+//
+//
+// void _launchfacebook() async {
+//   if (!await launch(
+//     facebook,
+//     forceWebView: false,
+//     enableJavaScript: true,
+//   )) throw 'Could not launch $_url';
+// }
+//
+// void _launchinstagram() async {
+//   if (!await launch(
+//     instagram,
+//     forceWebView: false,
+//     enableJavaScript: true,
+//   )) throw 'Could not launch $_url';
+// }
+//
+// void _launchUrl() async {
+//   if (!await launch(
+//     _url, forceWebView: false,
+//     //forceSafariVC: false,
+//     enableJavaScript: true,
+//   )) throw 'Could not launch $_url';
+// }
 
 //Creating a class user to store the data;
 class User {
@@ -23,6 +78,7 @@ class User {
   final String facebook;
   final String blood;
   final String other_pro;
+  final String image;
 
   User({
     // required this.id,
@@ -37,24 +93,27 @@ class User {
     required this.facebook,
     required this.blood,
     required this.other_pro,
-
+    required this.image,
   });
 }
 
-class Ayurveda_Display extends StatefulWidget {
+
+
+class Display_Familystore_data extends StatefulWidget {
   @override
-  _Ayurveda_DisplayState createState() => _Ayurveda_DisplayState();
+  _Display_Familystore_dataState createState() => _Display_Familystore_dataState();
 }
 
-class _Ayurveda_DisplayState extends State<Ayurveda_Display> {
+class _Display_Familystore_dataState extends State<Display_Familystore_data> {
+
+
 //Applying get request.
 
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/A/ayurveda_doctor.php";
-    // old  table textile
-    // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Textile/textiledisplayoriginal.php";
+
 
     final response = await http.get(Uri.parse(url));
 
@@ -75,7 +134,9 @@ class _Ayurveda_DisplayState extends State<Ayurveda_Display> {
           facebook: singleUser["facebook"].toString(),
           email: singleUser["email"].toString(),
           watsap: singleUser["watsap"].toString(),
-          other_pro: singleUser["other_pro"].toString());
+          other_pro: singleUser["other_pro"].toString(),
+          image: singleUser["image"].toString(),
+      );
 
       //Adding user to the list.
       users.add(user);
@@ -91,7 +152,7 @@ class _Ayurveda_DisplayState extends State<Ayurveda_Display> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Ayurveda Doctor",
+            "Textile Shops",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -155,14 +216,11 @@ class _Ayurveda_DisplayState extends State<Ayurveda_Display> {
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
-                                      SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Text(
-                                          snapshot.data[index].name,
-                                          style: GoogleFonts.lora(
-                                              fontSize: 25,
-                                              color: Colors.pink.shade700),
-                                        ),
+                                      Text(
+                                        snapshot.data[index].name,
+                                        style: GoogleFonts.lora(
+                                            fontSize: 25,
+                                            color: Colors.pink.shade700),
                                       ),
                                       SizedBox(height: 10,),
                                       Container(
@@ -216,7 +274,7 @@ class _Ayurveda_DisplayState extends State<Ayurveda_Display> {
                                       Row(
                                         children: [
                                           GestureDetector(
-                                            // onTap: _launchPhone,
+                                           // onTap: _launchPhone,
                                             child: Image.asset(
                                               "assets/mobile.png",
                                               height: 30,

@@ -11,54 +11,6 @@ import 'package:maps_launcher/maps_launcher.dart';
 
 
 final _url = 'https://www.astrasoftwaresolutions.com';
-//final Uri _url = Uri.parse('https://www.astrasoftwaresolutions.com');
-final phoneNumber = '+91 9633086226';
-
-final landphone = '+91 8848626187';
-final url = 'sms:$phoneNumber';
-final urrl = 'sms:$landphone';
-final facebook =
-    "https://www.facebook.com/arun.prabhun";
-final instagram =
-    "https://www.instagram.com/arunprabhun/?hl=en";
-
-
-void _launchPhone() async {
-  if (!await launch(
-    url,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchlandPhone() async {
-  if (!await launch(
-    urrl,
-  )) throw 'Could not launch $_url';
-}
-
-
-void _launchfacebook() async {
-  if (!await launch(
-    facebook,
-    forceWebView: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchinstagram() async {
-  if (!await launch(
-    instagram,
-    forceWebView: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchUrl() async {
-  if (!await launch(
-    _url, forceWebView: false,
-    //forceSafariVC: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
 
 //Creating a class user to store the data;
 class User {
@@ -74,6 +26,7 @@ class User {
   final String facebook;
   final String blood;
   final String other_pro;
+  final String image;
 
   User({
     // required this.id,
@@ -88,6 +41,7 @@ class User {
     required this.facebook,
     required this.blood,
     required this.other_pro,
+    required this.image,
   });
 }
 
@@ -128,7 +82,9 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
           facebook: singleUser["facebook"].toString(),
           email: singleUser["email"].toString(),
           watsap: singleUser["watsap"].toString(),
-          other_pro: singleUser["other_pro"].toString());
+          other_pro: singleUser["other_pro"].toString(),
+        image: singleUser["image"].toString(),
+      );
 
       //Adding user to the list.
       users.add(user);
@@ -192,6 +148,7 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 8),
                                 decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.blueAccent),
                                   color: Colors.blueGrey.shade100,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -199,7 +156,7 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
                                 MediaQuery
                                     .of(context)
                                     .size
-                                    .height / 1.8,
+                                    .height / 1.5,
                                 width: MediaQuery
                                     .of(context)
                                     .size
@@ -209,31 +166,34 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
                                     children: [
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .start,
-                                          children: [
-                                            // Container(
-                                            //   width: 30,
-                                            //   height: 30,
-                                            //   decoration: BoxDecoration(
-                                            //     shape: BoxShape.rectangle,
-                                            //     image: DecorationImage(
-                                            //         image: AssetImage(
-                                            //             'assets/familystore.png'),
-                                            //         fit: BoxFit.fill
-                                            //     ),
-                                            //   ),
-                                            // ),
-                                            // SizedBox(width: 15,),
-                                            Text(
-                                              snapshot.data[index].name,
-                                              style: GoogleFonts.lora(
-                                                  fontSize: 25,
-                                                  color: Colors.pink.shade700),
-                                            ),
-                                          ],),
+                                        child: Text(
+                                          snapshot.data[index].name,
+                                          style: GoogleFonts.lora(
+                                              fontSize: 25,
+                                              color: Colors.pink.shade700),
+                                        ),
                                       ),
+                                      SizedBox(height: 10,),
+                                      Container(
+                                        height: 100,
+                                        //  width: 300,
+                                        width: MediaQuery.of(context).size.width/1.4,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.red.shade900),
+                                          borderRadius: BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            image: NetworkImage(snapshot.data[index].image),
+                                            fit: BoxFit.fill,
+                                          ),
+
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   snapshot.data[index].name,
+                                      //   style: GoogleFonts.lora(
+                                      //       fontSize: 25,
+                                      //       color: Colors.pink.shade700),
+                                      // ),
                                       Text(
                                         snapshot.data[index].address,
                                         overflow: TextOverflow.ellipsis,
@@ -265,7 +225,7 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
                                       Row(
                                         children: [
                                           GestureDetector(
-                                            onTap: _launchPhone,
+                                            // onTap: _launchPhone,
                                             child: Image.asset(
                                               "assets/mobile.png",
                                               height: 30,
@@ -453,6 +413,20 @@ class _Grocery_DisplayState extends State<Grocery_Display> {
 
 
                                       ),
+
+                                      // Container(
+                                      //   height: 100,
+                                      // //  width: 300,
+                                      //   width: MediaQuery.of(context).size.width/1.5,
+                                      //   decoration: BoxDecoration(
+                                      //     borderRadius: BorderRadius.circular(15),
+                                      //     image: DecorationImage(
+                                      //       image: NetworkImage(snapshot.data[index].image),
+                                      //       fit: BoxFit.fill,
+                                      //     ),
+                                      //
+                                      // ),
+                                      // ),
                                     ],
                                   ),
                                 ),

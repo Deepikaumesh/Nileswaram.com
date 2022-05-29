@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,60 +9,12 @@ import 'package:open_mail_app/open_mail_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
-import '../Carousel/Imageview_test_Carousel.dart';
 
 
 
 
-final _url = 'https://www.astrasoftwaresolutions.com';
-//final Uri _url = Uri.parse('https://www.astrasoftwaresolutions.com');
-final phoneNumber = '+91 9633086226';
-
-final landphone = '+91 8848626187';
-final url = 'sms:$phoneNumber';
-final urrl = 'sms:$landphone';
-final facebook =
-    "https://www.facebook.com/arun.prabhun";
-final instagram =
-    "https://www.instagram.com/arunprabhun/?hl=en";
 
 
-void _launchPhone() async {
-  if (!await launch(
-    url,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchlandPhone() async {
-  if (!await launch(
-    urrl,
-  )) throw 'Could not launch $_url';
-}
-
-
-void _launchfacebook() async {
-  if (!await launch(
-    facebook,
-    forceWebView: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchinstagram() async {
-  if (!await launch(
-    instagram,
-    forceWebView: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
-
-void _launchUrl() async {
-  if (!await launch(
-    _url, forceWebView: false,
-    //forceSafariVC: false,
-    enableJavaScript: true,
-  )) throw 'Could not launch $_url';
-}
 
 //Creating a class user to store the data;
 class User {
@@ -79,6 +31,7 @@ class User {
   final String blood;
   final String other_pro;
   final String image;
+
 
   User({
     // required this.id,
@@ -97,14 +50,12 @@ class User {
   });
 }
 
-
-
-class Display_Familystore_data extends StatefulWidget {
+class Display_NonVeghotel_data extends StatefulWidget {
   @override
-  _Display_Familystore_dataState createState() => _Display_Familystore_dataState();
+  _Display_NonVeghotel_dataState createState() => _Display_NonVeghotel_dataState();
 }
 
-class _Display_Familystore_dataState extends State<Display_Familystore_data> {
+class _Display_NonVeghotel_dataState extends State<Display_NonVeghotel_data> {
 
 
 //Applying get request.
@@ -112,12 +63,24 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/Textile/textiledisplayoriginal.php";
-
+        "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Catagory_Display/hotel/reastaurant.php";
+    // old  table textile
+    // "https://astrasoftware.in/directoryapp/Nileswaram.com/Catagory_Display/Textile/textile_display.php";
 
     final response = await http.get(Uri.parse(url));
 
     var responseData = json.decode(response.body);
+     var hello= responseData;//(facebook);
+   //  print(hello(phoneNumber));
+    // print(hello(phoneNumber));
+    // // var k =hello(phoneNumber);
+    // // print(k);
+
+
+
+
+
+
 
     //Creating a list to store input data;
     List<User> users = [];
@@ -135,7 +98,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
           email: singleUser["email"].toString(),
           watsap: singleUser["watsap"].toString(),
           other_pro: singleUser["other_pro"].toString(),
-          image: singleUser["image"].toString(),
+        image: singleUser["image"].toString(),
       );
 
       //Adding user to the list.
@@ -152,7 +115,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Textile Shops",
+            "Restaurant",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
@@ -161,16 +124,6 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
               Navigator.pop(context);
             },
           ),
-          actions: [
-            //IconButton(onPressed: (){}, icon: Icons.photo),
-            Padding(padding: EdgeInsets.only(right:30)
-                ,child: GestureDetector(
-                    onTap: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageView_test_Carousel()));
-
-                    },
-                    child: Icon(Icons.photo,size: 30,))),
-          ],
         ),
         body: Container(
           padding: EdgeInsets.all(16.0),
@@ -210,6 +163,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 8),
                                 decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.blueAccent),
                                   color: Colors.blueGrey.shade100,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -217,7 +171,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                                 MediaQuery
                                     .of(context)
                                     .size
-                                    .height / 1.8,
+                                    .height / 1.5,
                                 width: MediaQuery
                                     .of(context)
                                     .size
@@ -227,31 +181,34 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                                     children: [
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .start,
-                                          children: [
-                                            // Container(
-                                            //   width: 30,
-                                            //   height: 30,
-                                            //   decoration: BoxDecoration(
-                                            //     shape: BoxShape.rectangle,
-                                            //     image: DecorationImage(
-                                            //         image: AssetImage(
-                                            //             'assets/familystore.png'),
-                                            //         fit: BoxFit.fill
-                                            //     ),
-                                            //   ),
-                                            // ),
-                                           // SizedBox(width: 15,),
-                                            Text(
-                                              snapshot.data[index].name,
-                                              style: GoogleFonts.lora(
-                                                  fontSize: 25,
-                                                  color: Colors.pink.shade700),
-                                            ),
-                                          ],),
+                                        child: Text(
+                                          snapshot.data[index].name,
+                                          style: GoogleFonts.lora(
+                                              fontSize: 25,
+                                              color: Colors.pink.shade700),
+                                        ),
                                       ),
+                                      SizedBox(height: 10,),
+                                      Container(
+                                        height: 100,
+                                        //  width: 300,
+                                        width: MediaQuery.of(context).size.width/1.4,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.red.shade900),
+                                          borderRadius: BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            image: NetworkImage(snapshot.data[index].image),
+                                            fit: BoxFit.fill,
+                                          ),
+
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   snapshot.data[index].name,
+                                      //   style: GoogleFonts.lora(
+                                      //       fontSize: 25,
+                                      //       color: Colors.pink.shade700),
+                                      // ),
                                       Text(
                                         snapshot.data[index].address,
                                         overflow: TextOverflow.ellipsis,
@@ -283,7 +240,7 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
                                       Row(
                                         children: [
                                           GestureDetector(
-                                            onTap: _launchPhone,
+                                            // onTap: _launchPhone,
                                             child: Image.asset(
                                               "assets/mobile.png",
                                               height: 30,
@@ -472,18 +429,19 @@ class _Display_Familystore_dataState extends State<Display_Familystore_data> {
 
                                       ),
 
-                                      Container(
-                                        height: 100,
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                          color: Colors.yellow,
-                                          image: DecorationImage(
-                                            image: NetworkImage(snapshot.data[index].image),
-                                            fit: BoxFit.fill,
-                                          ),
-
-                                      ),
-                                      ),
+                                      // Container(
+                                      //   height: 100,
+                                      // //  width: 300,
+                                      //   width: MediaQuery.of(context).size.width/1.5,
+                                      //   decoration: BoxDecoration(
+                                      //     borderRadius: BorderRadius.circular(15),
+                                      //     image: DecorationImage(
+                                      //       image: NetworkImage(snapshot.data[index].image),
+                                      //       fit: BoxFit.fill,
+                                      //     ),
+                                      //
+                                      // ),
+                                      // ),
                                     ],
                                   ),
                                 ),

@@ -7,11 +7,11 @@ import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/Ladies
 import 'package:untitled1/Sub_Catagory_Registrations/Textile_Sub_Sections/UnderGarments_Section.dart';
 
 import '../Sub_Catagory_Registrations/Textile_Sub_Sections/Family_store_Registration.dart';
-import 'FamilystoreDisplay.dart';
+import '../Display Catagory/FamilystoreDisplay.dart';
 import 'GentsDisplay.dart';
 import 'KidsDisplay.dart';
 import 'LadiesDisplay.dart';
-import 'NonVegHotelDisplay.dart';
+import '../Display Catagory/NonVegHotelDisplay.dart';
 import 'UndergarmentsDisplay.dart';
 import 'VegHotelDisplay.dart';
 
