@@ -127,6 +127,8 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 15,),
 
                     News(),
+
+
                     TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -151,7 +153,11 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 10,
                     ),
+
+
                     CatagoryimageButton(),
+
+
                     SizedBox(
                       height: 30,
                     ),

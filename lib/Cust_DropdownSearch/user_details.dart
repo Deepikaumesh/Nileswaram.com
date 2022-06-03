@@ -17,6 +17,8 @@ class Cust_UserDetails {
   Cust_UserDetails({
     required this.id,
     required this.name,
+    required this.image,
+    required this.catagory,
     required this.address,
     required this.blood,
     required this.phone,
@@ -30,6 +32,8 @@ class Cust_UserDetails {
 
   String id;
   String name;
+  String image;
+  String catagory;
   String address;
   String blood;
   String phone;
@@ -43,6 +47,8 @@ class Cust_UserDetails {
   factory Cust_UserDetails.fromJson(Map<dynamic, dynamic> json) => Cust_UserDetails(
     id: json["id"],
     name: json["name"],
+    image: json["image"],
+    catagory: json["catagory"],
     address: json["address"],
     blood: json["blood"],
     phone: json["phone"],
@@ -57,6 +63,8 @@ class Cust_UserDetails {
   Map<dynamic,dynamic> toJson() => {
     "id": id,
     "name": name,
+    "image":image,
+    "catagory":catagory,
     "address": address,
     "blood": blood,
     "phone": phone,
@@ -93,40 +101,3 @@ class Cust_UserDetails {
 
 
 
-// import 'dart:convert';
-//
-// List<UserDetails> userModelFromJson(String str) => List<UserDetails>.from(json.decode(str).map((x) => UserDetails.fromJson(x)));
-//
-// String userModelToJson(List<UserDetails> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-//
-// class UserDetails {
-//   UserDetails({
-//     required this.postId,
-//     required this.id,
-//     required this.name,
-//     required this.email,
-//     required this.body,
-//   });
-//
-//   String postId;
-//   String id;
-//   String name;
-//   String email;
-//   String body;
-//
-//   factory UserDetails.fromJson(Map<dynamic, dynamic> json) => UserDetails(
-//     postId: json["postId"],
-//     id: json["id"],
-//     name: json["name"],
-//     email: json["email"],
-//     body: json["body"],
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "postId": postId,
-//     "id": id,
-//     "name": name,
-//     "email": email,
-//     "body": body,
-//   };
-// }

@@ -23,8 +23,8 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
   List<Cust_UserDetails> _searchResult = [];
   List<Cust_UserDetails> _userDetails = [];
   final String url =
-      // "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/search.php";
-      "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/tableconnection.php";
+     // "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/tableconnection.php";
+  "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Main_Display.php";
 
   Future<Null> getUserDetaails() async {
     final response = await http.get(Uri.parse(url));
@@ -44,6 +44,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
     }
     _userDetails.forEach((userDetail) {
       if (userDetail.name.contains(text) ||
+          userDetail.catagory.contains(text) ||
           userDetail.address.contains(text) ||
           userDetail.blood.contains(text) ||
           userDetail.phone.contains(text) ||
@@ -97,7 +98,8 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                       hintText: 'search',
                       border: InputBorder.none,
                     ),
-                    onChanged: onSearchTextChanged,
+                    onChanged:
+                    onSearchTextChanged,
                       textCapitalization: TextCapitalization.sentences,
 
 
@@ -117,10 +119,26 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                             height: MediaQuery.of(context).size.height/2.10,
                             child: Card(
                               child: ListTile(
-                                title: Text(_searchResult[i].name,
-                                    style: GoogleFonts.prompt(
-                                        color: Colors.red.shade900,
-                                        fontSize: 18)),
+                                title: Row(
+                                  children:[
+                                    Container(
+                                      height: 30,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(color: Colors.red.shade900),
+                                        image: DecorationImage(
+                                          image: NetworkImage(_userDetails[i].image),
+                                        ),
+
+                                      ),
+                                    ),
+
+                                    Text(_searchResult[i].name,
+                                      style: GoogleFonts.prompt(
+                                          color: Colors.red.shade900,
+                                          fontSize: 18)),
+                               ], ),
                                   subtitle: Container(
                                       child: SingleChildScrollView(
                                         child: Column(
@@ -162,7 +180,8 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                         );
                                                       }
                                                     },
-                                                    child: Text(_userDetails[i].email))
+                                                    child: Text(_userDetails[i].email,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)
+                                                      ,))
                                               ],
                                             ),
                                             SizedBox(
@@ -173,7 +192,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                 Text("website:-"),
                                                 GestureDetector(
                                                     onTap: () async => !await launch(_userDetails[i].website),
-                                                    child: Text(_userDetails[i].website))
+                                                    child: Text(_userDetails[i].website,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                               ],
                                             ),
                                             SizedBox(
@@ -184,7 +203,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                 Text("facebook:-"),
                                                 GestureDetector(
                                                     onTap: () async => !await launch(_userDetails[i].facebook),
-                                                    child: Text(_userDetails[i].facebook,style: TextStyle(fontSize: 12),))
+                                                    child: Text(_userDetails[i].facebook,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,),))
                                               ],
                                             ),
                                             SizedBox(
@@ -195,7 +214,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                 Text("Instagram  id:-"),
                                                 GestureDetector(
                                                     onTap: () async => !await launch(_userDetails[i].insta),
-                                                    child: Text(_userDetails[i].insta,style: TextStyle(fontSize: 12),))
+                                                    child: Text(_userDetails[i].insta,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,),))
                                               ],
                                             ),
                                             SizedBox(
@@ -206,7 +225,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                 Text("Phone no:-"),
                                                 GestureDetector(
                                                     onTap: () async => !await launch('sms:' + _userDetails[i].phone),
-                                                    child: Text(_userDetails[i].phone))
+                                                    child: Text(_userDetails[i].phone,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                               ],
                                             ),
                                             SizedBox(
@@ -219,7 +238,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                     onTap: () async => await launch(
                                                         "https://wa.me/${_userDetails[i].watsap}?text=Hello"),
 
-                                                    child: Text(_userDetails[i].watsap))
+                                                    child: Text(_userDetails[i].watsap,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                               ],
                                             ),
                                             SizedBox(
@@ -230,7 +249,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                 Text("Mobile no:-"),
                                                 GestureDetector(
                                                     onTap: () async => !await launch('sms:' + _userDetails[i].mobile),
-                                                    child: Text(_userDetails[i].mobile))
+                                                    child: Text(_userDetails[i].mobile,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                               ],
                                             ),
                                             SizedBox(
@@ -247,75 +266,26 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                             ),
                                             Row(
                                               children: [
-                                                Text("View Location:-"),
                                                 GestureDetector(
                                                     onTap: (){
                                                       MapsLauncher.launchQuery(
-                                                         _userDetails[i].name +  _userDetails[i].address);
+                                                        _userDetails[i].name +  _userDetails[i].address,);
                                                     },
-                                                    child: Icon(Icons.location_on)),
+                                                    child: Text("View Location:-",style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,))),
+                                                GestureDetector(
+                                                    onTap: (){
+                                                      MapsLauncher.launchQuery(
+                                                         _userDetails[i].name +  _userDetails[i].address,);
+                                                    },
+                                                    child: Icon(Icons.location_on,color: Colors.red.shade900,)),
                                               ],
                                             ),
 
                                           ],
                                         ),
                                       )
-                                    // leading: SingleChildScrollView(
-                                    //   child: Container(
-                                    //       child: Column(
-                                    //     children: [
-                                    //       Text(_userDetails[index].email),
-                                    //       // Text(_userDetails[index].watsap),
-                                    //       // Text(_userDetails[index].phone),
-                                    //       // Text(_userDetails[index].address),
-                                    //     ],
-                                    //   )),
-                                    // ),
-                                    // subtitle: Container(
-                                    //   child: Column(
-                                    //     children: [
-                                    //       Text(_userDetails[index].address,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].email,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].watsap,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].phone,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].mobile,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].website,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].facebook,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].insta,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].blood,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //
-                                    //
-                                    //     ],
-                                    //   ),
-                                    // ),
                                   )
-                                // trailing: Text(_userDetails[i].phone),
-                                // leading: SingleChildScrollView(
-                                //   child: Container(
-                                //       child: Column(
-                                //     children: [
-                                //       Text(_userDetails[i].email),
-                                //       Text(_userDetails[i].watsap),
-                                //       Text(_userDetails[i].phone),
-                                //       Text(_userDetails[i].address),
-                                //     ],
-                                //   )),
-                                // ),
-                                // subtitle:   Container(
-                                //   child: Column(
-                                //     children:[
-                                //       Text(_userDetails[i].address,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                //       Text(_userDetails[i].email,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18)),
-                                //       Text(_userDetails[i].watsap,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                //       Text(_userDetails[i].phone,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                //       Text(_userDetails[i].mobile,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                //       Text(_userDetails[i].website,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18)),
-                                //       Text(_userDetails[i].facebook,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18)),
-                                //       Text(_userDetails[i].insta,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18)),
-                                //       Text(_userDetails[i].blood,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18)),
-                                //
-                                //  ] ),
-                                // ),
+
                               ),
 
                               //   )
@@ -334,16 +304,48 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
                               child: ListTile(
-                                title: Text(
-                                  _userDetails[index].name,
-                                  style: GoogleFonts.prompt(
-                                      color: Colors.red.shade900, fontSize: 18),
+                                title: Row(
+                                  children:[
+                                    Container(
+                                      height: 30,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(color: Colors.red.shade900),
+                                        image: DecorationImage(
+                                          image: NetworkImage(_userDetails[index].image),
+                                        ),
+
+                                      ),
+                                    ),
+                                    Text(
+                                    _userDetails[index].name,
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.red.shade900, fontSize: 18),
+                                  ),
+                                ],
                                 ),
 
                                 subtitle: Container(
                                     child: SingleChildScrollView(
                                   child: Column(
                                     children: [
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "Category:-",
+                                          ),
+                                          Flexible(
+                                              child: Text(
+                                                _userDetails[index].catagory,
+                                                maxLines: 3,
+                                              ))
+                                        ],
+                                      ),
+
                                       SizedBox(
                                         height: 15,
                                       ),
@@ -381,7 +383,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                                   );
                                                 }
                                               },
-                                              child: Text(_userDetails[index].email))
+                                              child: Text(_userDetails[index].email,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                         ],
                                       ),
                                       SizedBox(
@@ -392,7 +394,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                           Text("website:-"),
                                           GestureDetector(
                                               onTap: () async => !await launch(_userDetails[index].website),
-                                              child: Text(_userDetails[index].website))
+                                              child: Text(_userDetails[index].website,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                         ],
                                       ),
                                       SizedBox(
@@ -403,7 +405,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                           Text("facebook:-"),
                                           GestureDetector(
                                               onTap: () async => !await launch(_userDetails[index].facebook),
-                                              child: Text(_userDetails[index].facebook,style: TextStyle(fontSize: 12),))
+                                              child: Text(_userDetails[index].facebook,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,),))
                                         ],
                                       ),
                                       SizedBox(
@@ -414,7 +416,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                           Text("Instagram  id:-"),
                                           GestureDetector(
                                               onTap: () async => !await launch(_userDetails[index].insta),
-                                              child: Text(_userDetails[index].insta,style: TextStyle(fontSize: 12),))
+                                              child: Text(_userDetails[index].insta,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                         ],
                                       ),
                                       SizedBox(
@@ -425,7 +427,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                           Text("Phone no:-"),
                                           GestureDetector(
                                               onTap: () async => !await launch('sms:' + _userDetails[index].phone),
-                                              child: Text(_userDetails[index].phone))
+                                              child: Text(_userDetails[index].phone,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                         ],
                                       ),
                                       SizedBox(
@@ -438,7 +440,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                               onTap: () async => await launch(
                                                   "https://wa.me/${_userDetails[index].watsap}?text=Hello"),
 
-                                              child: Text(_userDetails[index].watsap))
+                                              child: Text(_userDetails[index].watsap,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                         ],
                                       ),
                                       SizedBox(
@@ -449,7 +451,7 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                           Text("Mobile no:-"),
                                           GestureDetector(
                                               onTap: () async => !await launch('sms:' + _userDetails[index].mobile),
-                                              child: Text(_userDetails[index].mobile))
+                                              child: Text(_userDetails[index].mobile,style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,)))
                                         ],
                                       ),
                                       SizedBox(
@@ -464,46 +466,23 @@ class _Cust_Searchbar_HomeState extends State<Cust_Searchbar_Home> {
                                       SizedBox(height: 15,),
                                       Row(
                                         children: [
-                                          Text("View Location:-"),
                                           GestureDetector(
                                               onTap: (){
                                                 MapsLauncher.launchQuery(
                                                     _userDetails[index].name +  _userDetails[index].address);
                                               },
-                                              child: Icon(Icons.location_on)),
+                                              child: Text("View Location:-",style: TextStyle(fontSize: 12,color: Colors.red.shade900,decoration: TextDecoration.underline,))),
+                                          GestureDetector(
+                                              onTap: (){
+                                                MapsLauncher.launchQuery(
+                                                    _userDetails[index].name +  _userDetails[index].address);
+                                              },
+                                              child: Icon(Icons.location_on,color: Colors.red.shade900,)),
                                         ],
                                       ),
                                     ],
                                   ),
                                 )
-                                    // leading: SingleChildScrollView(
-                                    //   child: Container(
-                                    //       child: Column(
-                                    //     children: [
-                                    //       Text(_userDetails[index].email),
-                                    //       // Text(_userDetails[index].watsap),
-                                    //       // Text(_userDetails[index].phone),
-                                    //       // Text(_userDetails[index].address),
-                                    //     ],
-                                    //   )),
-                                    // ),
-                                    // subtitle: Container(
-                                    //   child: Column(
-                                    //     children: [
-                                    //       Text(_userDetails[index].address,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].email,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].watsap,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].phone,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].mobile,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].website,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].facebook,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].insta,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //       Text(_userDetails[index].blood,style: GoogleFonts.prompt(color: Colors.blue.shade900,fontSize: 18),),
-                                    //
-                                    //
-                                    //     ],
-                                    //   ),
-                                    // ),
                                     ),
                               ),
                             ),
