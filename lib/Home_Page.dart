@@ -114,6 +114,8 @@ class _HomeState extends State<Home> {
                   children: [
 
                     Adcarousel(),
+
+
                     SizedBox(height:30 ,),
 
 

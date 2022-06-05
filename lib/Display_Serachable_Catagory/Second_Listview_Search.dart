@@ -91,27 +91,7 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
 
 
   _listitem(index){
-    // return Card(
-    //   margin: EdgeInsets.all(10),
-    //   color: Colors.greenAccent.shade100,
-    //   shape: RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.circular(20.0),
-    //   ),
-    //   child: Padding(
-    //     padding: EdgeInsets.only(top: 32,bottom: 32,left: 16,right: 16),
-    //     child: Column(
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: [
-    //         Text(
-    //           _notesForDisplay[index].catagory,
-    //         ),
-    //         Text(
-    //           _notesForDisplay[index].name,
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
+
  return   Card(
       margin: EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
