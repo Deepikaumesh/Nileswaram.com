@@ -70,29 +70,41 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
   }
 
   _searchBar(){
-    return Padding(padding: EdgeInsets.all(20.0),
-    child: TextField(
-      decoration: InputDecoration(
-        prefixIcon:Icon(Icons.search),
-          hintText: 'Search Catagory....'
+    return Padding(padding: EdgeInsets.all(30.0),
+      child: TextField(
+        textAlign: TextAlign.start,
+        textAlignVertical: TextAlignVertical.center,
+        decoration: new InputDecoration(
+          border: new OutlineInputBorder(
+            borderSide: new BorderSide(color: Colors.teal),
+            borderRadius: BorderRadius.circular(40),
+
+          ),
+          hintText: 'Search Catagory....',
+        ),
+        // decoration: InputDecoration(
+        //     prefixIcon:Icon(Icons.search),
+        //     hintText: 'Search Catagory....',
+        //   border: InputBorder.none,
+        // ),
+        onChanged: (text) {
+          text= text.toLowerCase();
+          setState(() {
+            _notesForDisplay = _notes.where((note) {
+              var noteCatagory =note.catagory.toLowerCase();
+              return noteCatagory.contains(text);
+            }).toList();
+          });
+        },
       ),
-      onChanged: (text) {
-        text= text.toLowerCase();
-        setState(() {
-          _notesForDisplay = _notes.where((note) {
-            var noteCatagory =note.catagory.toLowerCase();
-            return noteCatagory.contains(text);
-          }).toList();
-        });
-      },
-    ),
     );
   }
-
 
   _listitem(index){
 
  return   Card(
+   elevation: 5,
+   color: Colors.grey.shade200,
       margin: EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -112,10 +124,12 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
           ),
           title: Text(
             _notesForDisplay[index].catagory,
+            overflow: TextOverflow.ellipsis,
             style: GoogleFonts.lora(
                 fontSize: 20, color: Colors.pink.shade700),
           ),
           subtitle: Text(_notesForDisplay[index].name,
+            overflow: TextOverflow.ellipsis,
               style: GoogleFonts.lora(
               fontSize: 15, color: Colors.pink.shade700),
           ),

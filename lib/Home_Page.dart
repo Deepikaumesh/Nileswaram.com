@@ -9,6 +9,7 @@ import 'Display Catagory/news_Display.dart';
 import 'Drawer.dart';
 import 'EventDisplay.dart';
 import 'News_container.dart';
+import 'Readmore_Test/Read_More_Text.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -126,26 +127,31 @@ class _HomeState extends State<Home> {
                         color: Colors.blueGrey.shade900,
                       ),
                     ),
-                    SizedBox(height: 15,),
+                  //  SizedBox(height: 15,),
 
-                    News(),
+                  // News(),
+                    News_Display(),
+
+                    // TextButton(
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => News_Display()));
+                    //     },
+                    //     child: Text(
+                    //       "View More News>>",
+                    //       style: GoogleFonts.quicksand(
+                    //           color: Colors.blue, fontWeight: FontWeight.bold),
+                    //     )),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
 
 
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => News_Display()));
-                        },
-                        child: Text(
-                          "View More News>>",
-                          style: GoogleFonts.quicksand(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
-                        )),
-                    SizedBox(
-                      height: 15,
-                    ),
+
+
+
                     Text(
                       "Select Category",
                       style: GoogleFonts.prompt(
@@ -176,6 +182,10 @@ class _HomeState extends State<Home> {
 
                   //  EventDisplay(),
                     CustEventDisplay(),
+                    //
+                    // TextButton(onPressed: (){
+                    //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Read_More()));
+                    // }, child: Text("read more"))
 
                   ],
                 ),

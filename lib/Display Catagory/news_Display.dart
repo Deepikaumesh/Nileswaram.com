@@ -56,23 +56,24 @@ class _News_DisplayState extends State<News_Display> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.pink.shade800,
-          title: Text(
-            "News",
-            style: GoogleFonts.prompt(fontSize: 22),
-          ),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded,size: 35,),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: Container(
+    // return SafeArea(
+    //   child: Scaffold(
+    //     appBar: AppBar(
+    //       centerTitle: true,
+    //       backgroundColor: Colors.pink.shade800,
+    //       title: Text(
+    //         "News",
+    //         style: GoogleFonts.prompt(fontSize: 22),
+    //       ),
+    //       leading: IconButton(
+    //         icon: Icon(Icons.arrow_back_rounded,size: 35,),
+    //         onPressed: () {
+    //           Navigator.pop(context);
+    //         },
+    //       ),
+    //     ),
+    //     body:
+      return  Container(
           padding: EdgeInsets.all(16.0),
           child: FutureBuilder(
             future: getRequest(),
@@ -96,33 +97,63 @@ class _News_DisplayState extends State<News_Display> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 );
               } else {
-                return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (ctx, index) => SingleChildScrollView(
-                        child:Card(
-                          color: Colors.grey.shade300,
-                          margin: EdgeInsets.all(10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),),
-                          child: ListTile(
-                              contentPadding: EdgeInsets.all(10.0),
-                              leading: Icon(Icons.newspaper,color: Colors.red.shade900,),
-                              title:Text(snapshot.data[index].name, style: GoogleFonts.lora(fontSize: 25, color: Colors.pink.shade700),),
-                              onTap: () {
+                return SingleChildScrollView(
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    //color: Colors.red,
+                    height: 90,
+                    width: MediaQuery.of(context).size.width,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (ctx, index) => SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                            child:GestureDetector(
+                              onTap: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                                   return Detail_Screen_News(snapshot.data[index]);
                                 }));
-                              }  ),
-                        )
-                    ));
+                              },
+                              child: Container(
+                                height: 90,
+                                width: 90,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                  borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(width: 1,color: Colors.red.shade100),
+                                ),
+
+                                margin: EdgeInsets.all(8),
+                                child: GestureDetector(
+                                  onTap: (){
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+             return Detail_Screen_News(snapshot.data[index]);
+        }));
+                                  },
+                                  child:
+                                  Center(
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Text(snapshot.data[index].name,
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            color: Colors.red.shade900,fontWeight: FontWeight.bold),
+                                ),
+                                    ),
+                                  ),
+                                )
+                        ),
+                            )),
+                    ), ),
+                );
               }
             },
           ),
-        ),
-      ),
+       // ),
+     // ),
     );
   }
 }
