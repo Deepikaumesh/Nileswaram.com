@@ -6,6 +6,8 @@ import 'About_Us.dart';
 import 'Catagory/Catagory_image_buttons.dart';
 import 'Cust_DropdownSearch/Searchbar.dart';
 import 'Display Catagory/news_Display.dart';
+import 'Display/Public_Tourist_Local_Display_Container.dart';
+import 'Display_Serachable_Catagory/Second_Listview_Search.dart';
 import 'Drawer.dart';
 import 'EventDisplay.dart';
 import 'News_container.dart';
@@ -34,7 +36,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Nileswaram.com",
+          "Nileshwaram.com",
           style: GoogleFonts.aclonica(
             color: Colors.red.shade900,
             fontSize: 22.0,
@@ -67,7 +69,7 @@ class _HomeState extends State<Home> {
             icon: GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => View_More()));
+                      context, MaterialPageRoute(builder: (context) => Display_Searchable_Catagory()));
                 },
                 child: Icon(
                   Icons.menu_open_rounded,
@@ -175,13 +177,27 @@ class _HomeState extends State<Home> {
                     //       fontSize: 18, color: Colors.blueGrey.shade700),
                     // ),
                     Text(
+                      "Other Catagory",
+                      style: GoogleFonts.prompt(
+                          fontSize: 18, color: Colors.blueGrey.shade900),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    Public_Tourist_Local_Display_Container(),
+                    Text(
                       "Events",
                       style: GoogleFonts.prompt(
                           fontSize: 18, color: Colors.blueGrey.shade900),
                     ),
 
                   //  EventDisplay(),
+
+
                     CustEventDisplay(),
+
+
                     //
                     // TextButton(onPressed: (){
                     //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Read_More()));

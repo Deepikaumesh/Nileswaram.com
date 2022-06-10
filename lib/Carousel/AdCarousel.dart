@@ -63,7 +63,7 @@ class _AdcarouselState extends State<Adcarousel> {
         dotSize: 5.0,
         dotIncreasedColor: Color(0xFFFF335C),
         dotBgColor: Colors.transparent,
-        dotPosition: DotPosition.topCenter,
+        //dotPosition: DotPosition.topCenter,
         dotVerticalPadding: 10.0,
         showIndicator: true,
         indicatorBgPadding: 7.0,

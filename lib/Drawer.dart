@@ -36,7 +36,7 @@ class MainDrawer extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: Text(
-                    "Nileswaram.com",
+                    "Nileshwaram.com",
                     style: GoogleFonts.aclonica(
                       color: Colors.red.shade900,
                       fontSize: 20.0,

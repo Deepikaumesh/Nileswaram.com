@@ -107,6 +107,8 @@ class _News_DisplayState extends State<News_Display> {
                     height: 90,
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
+                      shrinkWrap: true,
+
                       scrollDirection: Axis.horizontal,
                         itemCount: snapshot.data.length,
                         itemBuilder: (ctx, index) => SingleChildScrollView(

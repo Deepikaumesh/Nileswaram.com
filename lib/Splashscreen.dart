@@ -21,7 +21,7 @@ class _Splash_screenState extends State<Splash_screen> {
 
     Timer(
       Duration(seconds: 2),
-      () => Navigator.pushReplacement(
+          () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Home()),
       ),
@@ -38,24 +38,24 @@ class _Splash_screenState extends State<Splash_screen> {
 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/nileswram.png",
-                height: 45,
-                width: 45,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Nileshwaram.com",
-                style: GoogleFonts.aclonica(
-                  color: Colors.red.shade900,
-                  fontSize: 11.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+        children: [
+          Image.asset(
+            "assets/nileswram.png",
+            height: 45,
+            width: 45,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Nileshwaram.com",
+            style: GoogleFonts.aclonica(
+              color: Colors.red.shade900,
+              fontSize: 11.0,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
 
 
       ),

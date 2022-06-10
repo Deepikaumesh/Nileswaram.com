@@ -31,7 +31,7 @@
 
 
     <application
-        android:label="Nileswaram.com"
+        android:label="Nileshwaram.com"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
