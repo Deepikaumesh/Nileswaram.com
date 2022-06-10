@@ -6,7 +6,7 @@ import 'About_Us.dart';
 import 'Catagory/Catagory_image_buttons.dart';
 import 'Cust_DropdownSearch/Searchbar.dart';
 import 'Display Catagory/news_Display.dart';
-import 'Display/Public_Tourist_Local_Display_Container.dart';
+import 'Display_Other_Catagory/Public_Tourist_Local_Display_Container.dart';
 import 'Display_Serachable_Catagory/Second_Listview_Search.dart';
 import 'Drawer.dart';
 import 'EventDisplay.dart';

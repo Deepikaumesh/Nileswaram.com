@@ -47,7 +47,7 @@ class _Tourist_Place_DisplayState extends State<Tourist_Place_Display> {
 
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
-    String url ="https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Public_tourist_Display2.php";
+    String url ="https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Public_tourist_Display.php";
 
 
 

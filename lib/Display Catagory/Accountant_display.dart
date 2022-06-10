@@ -95,7 +95,7 @@ class _Accountant_DisplayState extends State<Accountant_Display> {
           centerTitle: true,
           backgroundColor: Colors.pink.shade800,
           title: Text(
-            "Accountant Display",
+            "Accountant Display_Other_Catagory",
             style: GoogleFonts.prompt(fontSize: 22),
           ),
           leading: IconButton(
