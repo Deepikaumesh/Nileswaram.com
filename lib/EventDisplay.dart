@@ -18,8 +18,7 @@ class _CustEventDisplayState extends State<CustEventDisplay> {
   //late List imageList;
   bool loading = true;
   String imagefolder =
-  //"https://jcizone19.in/._A_nileswaram/directoryapp/images/";
-  // "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/";
+
       "https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/eventimages/";
 
   fetchAllImage() async {

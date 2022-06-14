@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../Local_Body_Display/Local_Body_Display.dart';
 import 'Public_Numbers2_display.dart';
 import 'Public_organisation_display.dart';
 import 'Representative_display.dart';
@@ -39,7 +38,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Tourist_Place_Display()));
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Tourist_Display_with_searchbar()));
 
                       },
                       child: new Image.asset(
@@ -49,7 +48,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                       ),
                     ),
                     TextButton(onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Tourist_Place_Display()));
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Tourist_Display_with_searchbar()));
                       // Navigator.push(context,MaterialPageRoute(builder: (context)=>Hotel_Sub_Display()));
                     }, child: Text("Attractions",style:GoogleFonts.quicksand(
                         color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold,fontSize: 12),))
@@ -67,7 +66,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
 
                     GestureDetector(
                       onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Public_Organisation_Display()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Organisation_Display_with_searchbar()));
                       },
                       child: new Image.asset(
                         'assets/public.png',
@@ -76,7 +75,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                       ),
                     ),
                     TextButton(onPressed: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Public_Organisation_Display()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Organisation_Display_with_searchbar()));
                     }, child: Text(
 
                       "Organisations",style:GoogleFonts.quicksand(
@@ -93,7 +92,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                   children: [
                     GestureDetector(
                       onTap:(){
-                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Public_Numbers2_Display()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Public_Numbers_Display_with_searchbar()));
                       } ,
                       child: new Image.asset(
                         'assets/ob.png',
@@ -102,7 +101,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                       ),
                     ),
                     TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Public_Numbers2_Display()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Public_Numbers_Display_with_searchbar()));
                     }, child: Text("Public Numbers",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold,fontSize: 12),))
                   ],
                 ),
@@ -111,7 +110,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                   children: [
                     GestureDetector(
                       onTap:(){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Representative_Display()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Representatives_Display_with_searchbar()));
                       } ,
                       child: new Image.asset(
                         'assets/profile.png',
@@ -120,7 +119,7 @@ class Public_Tourist_Local_Display_ContainerState extends State<Public_Tourist_L
                       ),
                     ),
                     TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Representative_Display()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Representatives_Display_with_searchbar()));
                     }, child: Text("Representative",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold,fontSize: 12),))
                   ],
                 ),

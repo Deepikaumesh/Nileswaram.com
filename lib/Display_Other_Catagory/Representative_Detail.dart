@@ -65,6 +65,15 @@ class Representative_Detail extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             )),
+                        Padding(
+                          // padding: EdgeInsets.only(top: 20, right: 150),
+                            padding: EdgeInsets.only(
+                                right: 30, left: 30, top: 10),
+                            child: Text(
+                              passing_data.catagory,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            )),
 
 
 
