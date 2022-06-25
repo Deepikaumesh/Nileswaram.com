@@ -5,10 +5,10 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NonVegHotelDetail extends StatelessWidget {
+class Restaurant_Detail extends StatelessWidget {
   final passing_data;
 
-  const NonVegHotelDetail(this.passing_data, {Key? key}) : super(key: key);
+  const Restaurant_Detail(this.passing_data, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class NonVegHotelDetail extends StatelessWidget {
                       children: [
                         Padding(
                             padding: EdgeInsets.only(right: 30,left: 30,top: 10),
-                            // padding:EdgeInsets.all(20),
+                         // padding:EdgeInsets.all(20),
                             child: Text(
                               passing_data.name,
                               overflow: TextOverflow.ellipsis,
@@ -60,7 +60,7 @@ class NonVegHotelDetail extends StatelessWidget {
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             )),
                         Padding(
-                          // padding: EdgeInsets.only(right: 120),
+                            // padding: EdgeInsets.only(right: 120),
                             padding: EdgeInsets.only(right: 30,left: 30,top: 10),
                             child: Text(
                               passing_data.address,
@@ -70,7 +70,7 @@ class NonVegHotelDetail extends StatelessWidget {
                             )),
                         SizedBox(height: 5,),
                         Padding(
-                          //padding: EdgeInsets.only(right: 167),
+                            //padding: EdgeInsets.only(right: 167),
                             padding: EdgeInsets.only(right: 30,left: 30,top: 10),
                             child: GestureDetector(
 
@@ -360,7 +360,7 @@ class NonVegHotelDetail extends StatelessWidget {
                         border: Border.all(width: 1,color: Colors.red.shade100),
                         color: Colors.grey,
                         image: DecorationImage(
-                          image: AssetImage('assets/location.jpeg'),
+                          image: AssetImage('assets/loca.jpeg'),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(10)),
@@ -706,4 +706,5 @@ class NonVegHotelDetail extends StatelessWidget {
     );
   }
 }
+
 

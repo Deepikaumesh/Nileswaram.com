@@ -4,21 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import '../Display Catagory/Restaurant_Detail.dart';
-class Display_Searchable_Catagory extends StatefulWidget {
-  const Display_Searchable_Catagory({Key? key}) : super(key: key);
+import 'View_More_Detail.dart';
+
+
+
+
+class New_Searchbar extends StatefulWidget {
+  const New_Searchbar({Key? key}) : super(key: key);
 
   @override
-  _Display_Searchable_CatagoryState createState() => _Display_Searchable_CatagoryState();
+  _New_SearchbarState createState() => _New_SearchbarState();
 }
 
-class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagory> {
+class _New_SearchbarState extends State<New_Searchbar> {
 
 
   List<Note> _notes = [];
   List<Note> _notesForDisplay =[];
   Future <List<Note>> fetchNotes() async{
-    var url ="https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Main_Display_ASC_order.php";
+    var url ="https://jcizone19.in/._A_nileswaram/directoryapp/Nileswaram.com/Main_Search_Box_Display.php";
     var response = await http.get(Uri.parse(url));
 
 
@@ -28,7 +32,7 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
     if (response.statusCode ==200) {
       var notesjson =json.decode(response.body);
       for(var notejson in notesjson){
-     notes.add(Note.fromJson(notejson));
+        notes.add(Note.fromJson(notejson));
       }
     }return notes;
   }
@@ -49,7 +53,7 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("View More Category",style: GoogleFonts.prompt(color: Colors.red.shade900),),
+        appBar: AppBar(title: Text("Search Categories",style: GoogleFonts.prompt(color: Colors.red.shade900),),
           backgroundColor: Colors.white,
           elevation: 0,
           centerTitle: true,
@@ -59,18 +63,18 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
               Icons.arrow_back_rounded,color: Colors.red.shade900, size: 30,
             ),
           ), ),
-      body: ListView.builder(
+        body: ListView.builder(
           itemBuilder: (context, index) {
-              return index == 0 ? _searchBar() :_listitem(index-1);
+            return index == 0 ? _searchBar() :_listitem(index-1);
 
           },
-        itemCount: _notesForDisplay.length+1,
-      )
+          itemCount: _notesForDisplay.length+1,
+        )
     );
   }
 
   _searchBar(){
-    return Padding(padding: EdgeInsets.all(30.0),
+    return Padding(padding: EdgeInsets.only(top: 5,left: 20,right: 20,bottom: 10),
       child: TextField(
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
@@ -80,7 +84,7 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
             borderRadius: BorderRadius.circular(40),
 
           ),
-          hintText: 'Search Catagory....',
+          hintText: 'Search....',
         ),
         // decoration: InputDecoration(
         //     prefixIcon:Icon(Icons.search),
@@ -91,8 +95,8 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
           text= text.toLowerCase();
           setState(() {
             _notesForDisplay = _notes.where((note) {
-              var noteCatagory =note.catagory.toLowerCase();
-              return noteCatagory.contains(text);
+              var noteOther_pro =note.other_pro.toLowerCase();
+              return noteOther_pro.contains(text);
             }).toList();
           });
         },
@@ -100,17 +104,18 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
     );
   }
 
+
   _listitem(index){
 
- return   Card(
-   elevation: 5,
-   color: Colors.grey.shade200,
-      margin: EdgeInsets.all(10),
+    return   Card(
+      elevation: 5,
+      color: Colors.grey.shade200,
+      margin: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: ListTile(
-          contentPadding: EdgeInsets.all(10.0),
+          contentPadding: EdgeInsets.all(4.0),
           leading: Container(
             height: 50,
             width: 50,
@@ -123,20 +128,20 @@ class _Display_Searchable_CatagoryState extends State<Display_Searchable_Catagor
             ),
           ),
           title: Text(
-            _notesForDisplay[index].catagory,
+            _notesForDisplay[index].name,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.lora(
-                fontSize: 20, color: Colors.pink.shade700),
+                fontSize: 15, color: Colors.pink.shade700,fontWeight: FontWeight.bold),
           ),
-          subtitle: Text(_notesForDisplay[index].name,
+          subtitle: Text(_notesForDisplay[index].other_pro,
             overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.lora(
-              fontSize: 15, color: Colors.pink.shade700),
+            style: GoogleFonts.lora(
+                fontSize: 10, color: Colors.pink.shade700,fontWeight: FontWeight.bold),
           ),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) {
-                  return Restaurant_Detail(_notesForDisplay[index]);
+                  return Vie_More_Detail(_notesForDisplay[index]);
                 }
                 )
             );

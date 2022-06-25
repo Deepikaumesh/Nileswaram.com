@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Display Catagory/Grocery_display.dart';
-import '../Display Catagory/FamilystoreDisplay.dart';
-import '../Display Catagory/NonVegHotelDisplay.dart';
+import '../Display Catagory/Textile_Display.dart';
+import '../Display Catagory/Restaurant_Display.dart';
 import '../Display_Serachable_Catagory/Second_Listview_Search.dart';
 
 class CatagoryimageButton extends StatefulWidget {
@@ -37,7 +37,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
 
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Familystore_data()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Textile_data()));
                     },
                     child: new Image.asset(
                       'assets/cloth.png',
@@ -46,7 +46,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     ),
                   ),
                   TextButton(onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Familystore_data()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Display_Textile_data()));
   }, child: Text("Textile",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
 
   ],
@@ -56,7 +56,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Display_NonVeghotel_data()));
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Display_Restaurant_data()));
 
                     },
                     child: new Image.asset(
@@ -66,7 +66,7 @@ class CatagoryimageButtonState extends State<CatagoryimageButton> {
                     ),
                   ),
                   TextButton(onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Display_NonVeghotel_data()));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Display_Restaurant_data()));
                   }, child: Text("Restaurant",style:GoogleFonts.quicksand(color: Colors.blueGrey.shade900,fontWeight: FontWeight.bold),))
                 ],
               ),
