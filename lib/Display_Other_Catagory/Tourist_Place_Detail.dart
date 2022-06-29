@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:open_mail_app/open_mail_app.dart';
@@ -21,21 +22,23 @@ class Tourist_Display_Detail extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height / 2.5,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width / 0.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    passing_data.image,
+            FullScreenWidget(
+              child: Container(
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height / 2.5,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width / 0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      passing_data.image,
+                    ),
+                    fit: BoxFit.fill,
                   ),
-                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -45,8 +48,8 @@ class Tourist_Display_Detail extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    height: 100,
-                    width: 600,
+                    height: MediaQuery.of(context).size.height/7,
+                    width: MediaQuery.of(context).size.width/1,
                     decoration: BoxDecoration(
                       color: Colors.teal.shade100,
                       //  color: Color(0xB6C33A),
@@ -210,6 +213,7 @@ class Tourist_Display_Detail extends StatelessWidget {
                             height: 5,
                           ),
                           Container(
+                            padding: EdgeInsets.all(10),
                             height: 100,
                             width: 250,
                             decoration: BoxDecoration(
@@ -231,26 +235,51 @@ class Tourist_Display_Detail extends StatelessWidget {
 
 
                   SizedBox(height: 30,),
-                  Container(
-                    // child: Image.asset('assets/location.jpeg'),
-                    height: MediaQuery
-                        .of(context)
-                        .size
-                        .height / 6,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width / 1.2,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            width: 1, color: Colors.red.shade100),
-                        color: Colors.grey,
-                        image: DecorationImage(
-                          image: AssetImage('assets/loca.jpeg'),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
+                  // Container(
+                  //   // child: Image.asset('assets/location.jpeg'),
+                  //   height: MediaQuery
+                  //       .of(context)
+                  //       .size
+                  //       .height / 6,
+                  //   width: MediaQuery
+                  //       .of(context)
+                  //       .size
+                  //       .width / 1.2,
+                  //   decoration: BoxDecoration(
+                  //       border: Border.all(
+                  //           width: 1, color: Colors.red.shade100),
+                  //       color: Colors.grey,
+                  //       image: DecorationImage(
+                  //         image: AssetImage('assets/loca.jpeg'),
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //       borderRadius: BorderRadius.circular(10)),
+                  // ),
+                  Text(
+                    "About",
+                    style: GoogleFonts.inter(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade600),
                   ),
+                  SizedBox(height: 10,),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    height:MediaQuery.of(context).size.height/5,
+                    width:MediaQuery.of(context).size.width/1.2,
+                    decoration: BoxDecoration(
+                        color: Colors.pink.shade50,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                        child: Text(
+                          passing_data.about,
+                          style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade300),
+                        )),
+                  ),
+
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: ElevatedButton(

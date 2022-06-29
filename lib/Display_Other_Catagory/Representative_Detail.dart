@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:open_mail_app/open_mail_app.dart';
@@ -21,21 +22,23 @@ class Representative_Detail extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height / 2.5,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width / 0.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    passing_data.image,
+            FullScreenWidget(
+              child: Container(
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height / 2.5,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width / 0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      passing_data.image,
+                    ),
+                    fit: BoxFit.fill,
                   ),
-                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -45,8 +48,8 @@ class Representative_Detail extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    height: 100,
-                    width: 600,
+                    height: MediaQuery.of(context).size.height/7,
+                    width: MediaQuery.of(context).size.width/1,
                     decoration: BoxDecoration(
                       color: Colors.teal.shade100,
                       //  color: Color(0xB6C33A),

@@ -164,7 +164,7 @@ class _HomeState extends State<Home> {
                     //       fontSize: 18, color: Colors.blueGrey.shade700),
                     // ),
                     Text(
-                      "Other Catagory",
+                      "Other Category",
                       style: GoogleFonts.prompt(
                           fontSize: 18, color: Colors.blueGrey.shade900),
                     ),
